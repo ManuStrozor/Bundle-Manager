@@ -3,6 +3,11 @@ use \App\Autoloader;
 use \App\Database;
 use \App\Logs;
 
+// If not installed
+if (!file_exists(__DIR__.'/db_config.php')) {
+    header('Location:./notinstalled.php');
+}
+
 // Autoloader
 require dirname(__DIR__).'/app/Autoloader.php';
 Autoloader::register();

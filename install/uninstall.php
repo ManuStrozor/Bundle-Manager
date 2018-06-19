@@ -18,14 +18,3 @@ foreach ($tabs as $t) {
         $tab->delete();
     }
 }
-
-/* Verification file */
-$file = fopen(_PS_MODULE_DIR_.$this->name."/v3/inc/inits.php", "w");
-$content = <<<EOT
-<?php
-
-header('Location:./notinstalled.php');
-
-EOT;
-fwrite($file, $content);
-fclose($file);
