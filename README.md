@@ -10,6 +10,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 -you need a Prestashop shop obviously.
 
+-you have to install the module Key Manager (Bundle Manager can not work without it)
+
 -compress all the content of the repo into bundlemanager.zip
 
 ### Installing
