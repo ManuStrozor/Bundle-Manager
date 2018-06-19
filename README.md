@@ -4,8 +4,6 @@ Bundle Manager is an open-source solution for anyone who wants to manage their g
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
 -you need a Prestashop shop obviously.
