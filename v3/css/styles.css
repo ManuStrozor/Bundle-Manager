@@ -1,0 +1,161 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    padding-top: 66px;
+    padding-bottom: 30px;
+    margin-bottom: 66px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 66px;
+  color: white;
+}
+
+footer a {
+  color: lightgray;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-copyright {
+  line-height: 66px;
+  background-color: #007bff;
+  text-align: center;
+}
+
+.my-select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: #6c757d;
+  border-color: #ced4da;
+  border-left-color: white;
+  background-color: white;
+}
+
+.my-sistrix {
+  color: #007bff;
+  background-color: white;
+  border-color: #ced4da;
+  border-left-color: white;
+}
+
+.my-sistrix:hover {
+  color: #007bff;
+  background-color: #ecf0f1;
+  border-color: #ecf0f1;
+}
+
+.profile-item {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+
+.profile-item:hover {
+  cursor: default;
+}
+
+.gravatar {
+  height: 60px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+#sidebar a {
+  color: #007bff;
+  transition-duration: 0.2s;
+}
+
+#sidebar a:hover {
+  color: black;
+  transition-duration: 0.2s;
+}
+
+/*
+ * Off Canvas sidebar at medium breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 992px) {
+
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -33%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 33%;
+    margin-left: -6px;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 33%;
+    height: 100%;
+  }
+}
+
+/*
+ * Off Canvas wider at sm breakpoint
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 34em) {
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -45%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 45%;
+    margin-left: -6px;
+  }
+  
+  .sidebar-offcanvas {
+    width: 45%;
+  }
+}
+
+.card {
+    overflow:hidden;
+}
+
+.card-block .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
