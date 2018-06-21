@@ -46,7 +46,7 @@ ob_start(); // Page content
     <li class="list-group-item justify-content-between">
         <img src="/img/tmp/product_mini_<?= $product['id_image'] ?>.jpg?time=<?= time() ?>" /> <?= $product['name'] ?>
         <span class="fa-pull-right" style="color:<?= ($stock < 1) ? "#e74c3c" : "#27ae60" ?>">
-            <?= ($stock < 1) ? $l['out of stock'] : $l['in stock'].' <kbd style="background-color:#27ae60">'.$stock.'</kbd>' ?>
+            <?= ($stock < 1) ? $l['out of stock'] : $stock.' '.$l['in stock'] ?>
             <?= ($stock != $product['stav']) ? '<kbd>'.$product['stav'].'</kbd>' : null ?>
         </span>
     </li>
