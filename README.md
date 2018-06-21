@@ -6,7 +6,7 @@ Bundle Manager is an open-source solution for anyone who wants to manage their g
 
 ### Prerequisites
 
--you need a Prestashop shop obviously.
+-you need Prestashop obviously.
 
 -you have to install the module Key Manager (Bundle Manager can not work without it)
 
