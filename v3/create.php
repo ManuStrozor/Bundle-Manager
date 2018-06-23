@@ -1,15 +1,7 @@
 <?php
 require 'inc/inits.php';
 
-function getMD5()
-{
-	$str = '';
-	$chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567899876543210abcdefghijklmnopqrstuvwxyza9876543210';
-    for ($p = 0; $p < 28; $p++) {
-        $str .= $chars[mt_rand(0, 92)];
-    }
-    return md5(uniqid()).$str;
-}
+require 'inc/functions.php';
 
 if (isset($_POST) && !empty($_POST))
 {
@@ -118,9 +110,9 @@ ob_start(); // Page content
 		<tr>
 			<td>
 				<label class="cont">
-					<kbd <?php echo ($game['nb_keys'] < 10) ? 'style="background-color:#e74c3c"' : 'style="background-color:#2ecc71"'; ?>><?= $game['nb_keys'] ?></kbd> <?= $game['name'] ?>
-						<input type="checkbox" name="g<?= $game['id'] ?>" value="<?= $game['id'] ?>" />
-						<span class="checkmark"></span>
+					<kbd style="background-color:<?= nGradient("#e74c3c", "#27ae60", $game['nb_keys'], 10) ?>"><?= $game['nb_keys'] ?></kbd> <?= $game['name'] ?>
+					<input type="checkbox" name="g<?= $game['id'] ?>" value="<?= $game['id'] ?>" />
+					<span class="checkmark"></span>
 				</label>
 			</td>
 		</tr>
