@@ -69,7 +69,7 @@ ob_start(); // Page content
 			<div class="input-group-prepend">
 	          <div class="input-group-text"><i class="fas fa-at"></i></div>
 	        </div>
-			<input type="text" class="form-control" name="email" placeholder="<?= $l['E-mail address'] ?>" required>
+			<input type="email" class="form-control" name="email" placeholder="<?= $l['E-mail address'] ?>" required>
 		</div>
 	</div>
 	<div class="col-auto">
