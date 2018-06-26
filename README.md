@@ -4,6 +4,7 @@ Bundle Manager is an open-source solution for anyone who wants to manage their g
 
 ## Screenshots
 
+![screenshot](https://image.ibb.co/dyGhjo/bundlemanager_screenshot2.jpg)
 ![screenshot](https://image.ibb.co/i6eA4o/bundlemanager_screenshot.jpg)
 
 ## Getting Started
@@ -22,6 +23,6 @@ Simply install the module from the Prestashop's modules manager
 
 ## Authors
 
-* **Emmanuel Turbet.** - *Initial work* - [ManuStrozor](https://github.com/ManuStrozor)
+* **Emmanuel Turbet.** - [ManuStrozor](https://github.com/ManuStrozor)
 
 See also the list of [contributors](https://github.com/ManuStrozor/Bundle-Manager/graphs/contributors) who participated in this project.
