@@ -9,11 +9,10 @@ require 'inc/inits.php';
 if (isset($_POST['export_table']))
 {
     $backupDatabase = new Backup_Database(DB_SERV, DB_USER, DB_PASS, DB_NAME, $_POST['export_table']);
-    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">Télécharger '.$backupDatabase->getBackupFile().'</a>';
-    $result = $backupDatabase->backupTables($_POST['export_table']) ? 'L\'exportation s\'est bien déroulée. '.$link : 'Une erreur est survenue!';
+    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">_Télécharger_ '.$backupDatabase->getBackupFile().'</a>';
 
     $alertTitle = '<i class="fas fa-info-circle"></i>';
-    $alertContent = $result;
+    $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? "_L'exportation s'est bien déroulée._ ".$link : "_Une erreur est survenue !_";
 }
 
 // Edit
@@ -29,7 +28,7 @@ if (isset($_POST['edit']) && !empty($_POST['edit']))
 		$db->exec("UPDATE ".KEYS_TABLE." SET game_id = {$_POST['gid']} WHERE id = {$_POST['edit']}");
 		$changed = $db->fetch("SELECT (SELECT name FROM ".GAMES_TABLE." WHERE id = k.game_id) AS gname FROM ".KEYS_TABLE." k WHERE id = {$_POST['edit']}");
 		$logs->new('data', 'Game of '.$key['game_key'].' changed to '.$changed['gname']);
-		$alertContent .= "Game was modified ! ";
+		$alertContent .= "_Game was modified !_";
 	}
 
 	if ($key['platform_id'] != $_POST['pid'])
@@ -37,12 +36,12 @@ if (isset($_POST['edit']) && !empty($_POST['edit']))
 		$db->exec("UPDATE ".KEYS_TABLE." SET platform_id = {$_POST['pid']} WHERE id = {$_POST['edit']}");
 		$changed = $db->fetch("SELECT (SELECT name FROM ".PLATFORMS_TABLE." WHERE id = k.platform_id) AS pname FROM ".KEYS_TABLE." k WHERE id = {$_POST['edit']}");
 		$logs->new('data', 'Platform of '.$key['game_key'].' changed to '.$changed['pname']);
-		$alertContent .= "Platform was modified !";
+		$alertContent .= "_Platform was modified !_";
 	}
 
 	if ($key['game_id'] == $_POST['gid'] && $key['platform_id'] == $_POST['pid'])
 	{
-		$alertContent .= "No modifications !";
+		$alertContent .= "_No modifications !_";
 	}
 }
 

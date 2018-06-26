@@ -34,7 +34,7 @@ ob_start(); // Page content
             <strong><?= $l['Key Manager products'] ?></strong>
             <span class="fa-pull-right">
                 <input type="hidden" name="sync"/>
-                <button class="btn btn-link" type="submit">Synchronize the stock</button>
+                <button class="btn btn-link" type="submit">_Synchronize the stock_</button>
             </span>
         </form>
     </li>

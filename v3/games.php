@@ -11,11 +11,10 @@ $now = new DateTime("NOW");
 if (isset($_POST['export_table']))
 {
     $backupDatabase = new Backup_Database(DB_SERV, DB_USER, DB_PASS, DB_NAME, $_POST['export_table']);
-    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">Télécharger '.$backupDatabase->getBackupFile().'</a>';
-    $result = $backupDatabase->backupTables($_POST['export_table']) ? 'L\'exportation s\'est bien déroulée. '.$link : 'Une erreur est survenue!';
+    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">_Télécharger_ '.$backupDatabase->getBackupFile().'</a>';
 
     $alertTitle = '<i class="fas fa-info-circle"></i>';
-    $alertContent = $result;
+    $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? "_L'exportation s'est bien déroulée._ ".$link : "_Une erreur est survenue !_";
 }
 
 // Rename
@@ -34,7 +33,7 @@ if (isset($_POST['rename']) && !empty($_POST['rename']))
 	}
 	else
 	{
-		$alertContent = $game['name']." hasn't been modified";
+		$alertContent = $game['name']." _hasn't been modified_";
 	}
 }
 
@@ -120,7 +119,7 @@ ob_start(); // Page content
 	            <div class="modal-body">
 	        		<input type="hidden" name="rename" value="<?= $game['id'] ?>" />
 	        		<input type="text" class="form-control" name="new" placeholder="<?= $l['Type a new name'] ?>" value="<?= $game['name'] ?>" required/>
-	        		<a target="_blank" href="http://store.steampowered.com/search/?term=<?= $game['name'] ?>">Search on <i class="fab fa-steam-symbol"></i></a>
+	        		<a target="_blank" href="http://store.steampowered.com/search/?term=<?= $game['name'] ?>"><?= $l['Search on'] ?> <i class="fab fa-steam-symbol"></i></a>
 	            </div>
 	            <div class="modal-footer">
 	            	<button type="submit" class="btn btn-primary-outline"><?= $l['Rename'] ?></button>

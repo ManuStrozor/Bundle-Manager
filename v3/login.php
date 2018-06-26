@@ -34,7 +34,7 @@ if (!empty($email) && !empty($passwd)) {
 	else if ($result['id_profile'] != 1)
 	{
 		$alertTitle = $l['Sorry'];
-		$alertContent = $result['firstname'].", ".$l['you\'re not "Super Admin"'];
+		$alertContent = $result['firstname'].", ".$l['you\'re not \'Super Admin\''];
 	}
 	else
 	{
@@ -81,7 +81,7 @@ ob_start(); // Page content
 		</div>
 	</div>
 	<div class="col-auto">
-		<input type="checkbox" name="remember"> Rester connecté
+		<input type="checkbox" name="remember"> _Rester connecté_
 		<button type="submit" class="btn btn-primary"><?= $l['Login'] ?></button>
 	</div>
 </form>

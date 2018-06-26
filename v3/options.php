@@ -37,11 +37,11 @@ if (isset($_POST) && !empty($_POST))
 			$extensions = array('wav');
 
 			if(!in_array($file_ext, $extensions)){
-				$errors .= 'Please choose a WAV file. ';
+				$errors .= "_Please choose a WAV file._";
 			}
 
 			if($file_size >= 2097152){
-				$errors .= 'Size must be less than 2 MB. ';
+				$errors .= "_Size must be less than 2 MB._";
 			}
 
 			if(empty($errors)){
@@ -111,7 +111,7 @@ ob_start(); // Page content
 		<div class="card-body">
 			<h5 class="card-title">
 				<i class="fas fa-language"></i> <?= $l['International'] ?>
-				<small class="text-muted"><a href="lang/">Traductions</a></small>
+				<small class="text-muted"><a href="lang/"><?= $l['Translations'] ?></a></small>
 			</h5>
 			<h6 class="card-subtitle mb-2 text-muted">Ex: <em>
 				<?php foreach ($_langs as $_lang): ?>
@@ -173,7 +173,7 @@ ob_start(); // Page content
 	<div class="card" style="width:25rem;margin:10px">
 		<div class="card-body">
 			<h5 class="card-title">
-				<i class="fas fa-bug"></i> Debug
+				<i class="fas fa-bug"></i> _Debug_
 				<i class="fas fa-toggle-<?= (!$errors_enabled['value']) ? 'off' : 'on' ?> cursor-pointer" style="color:#007bff" onclick="window.document.toggleErrors.submit()"></i>
 			</h5>
 			<h6 class="card-subtitle mb-2 text-muted">Ex: <em>E_ALL & ~E_NOTICE & ~E_WARNING</em></h6>

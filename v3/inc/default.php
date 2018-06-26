@@ -44,7 +44,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 
 		<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0">
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?= $root ?>" title="<?= $l['Dashboard'] ?>">
-				<i class="fas fa-box"></i> Bundle Manager
+				<i class="fas fa-box"></i> _Bundle Manager_
 			</a>
             <?php if (!empty($_SESSION['logged_in'])): ?>
 			<form method="GET" name="mysearch" style="display:contents" onsubmit="setTarget()">
@@ -116,16 +116,11 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			                        <span id="messages"><?= $messages ?></span> <i class="fas fa-comment-alt"></i>
 			                    </a>
 							</div>
-							<div class="btn-group mr-2">
+							<div class="btn-group mr-4">
 								<a href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i></a>
 								<a href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-box-open"></i></a>
-							</div>
-							<div class="btn-group mr-2">
 								<a href="<?= $root ?>/history.php" title="<?= $l['History'] ?>" class="btn btn-sm btn-outline-secondary"><i class="far fa-clock"></i></a>
 								<a href="<?= $root ?>/options.php" title="<?= $l['Options'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></a>
-							</div>
-							<div class="btn-group mr-2">
-								<a href="/" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fas fa-store"></i></a>
 							</div>
 						</div>
 						<?php endif; ?>
