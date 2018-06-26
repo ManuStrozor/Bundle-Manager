@@ -3,13 +3,13 @@ require '../inc/inits.php';
 ob_start(); // Page content
 ?>
 
-<!-- Tableau des chaînes non traduites -->
+<!-- CHAINES NON TRADUITES -->
 <table class="table table-hover table-bordered table-sm">
 	<thead class="thead-dark">
 		<tr>
 			<th scope="col"><i class="fas fa-hashtag"></i></th>
-			<th scope="col">Fichier</th>
-			<th scope="col">Chaînes non traduites</th>
+			<th scope="col">_Fichier_</th>
+			<th scope="col">_Chaînes non traduites_</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -32,16 +32,36 @@ ob_start(); // Page content
 			{
 				$content = file_get_contents($filePath);
 				$matches = array();
-				if (preg_match_all("/(([a-z]*Title|[a-z]*Content)[\s]*=[\s]*\"|>)[a-zA-Z]{1,}[a-zA-Z_ 'âêîôûàéèù0-9]{1,}(<|\")/", $content, $matches) > 0)
+				if (preg_match_all("/[^\w]_[a-zÀ-ÿ0-9\s'().!?]+_[^\w]/i", $content, $matches) > 0)
 		    	{
 		    		?>
 		    		<tr>
 						<th scope="row"><?= $cntRows++ ?></th>
 						<td><?= str_replace('../', '', $filePath) ?></td>
 						<td>
-							<?php foreach ($matches[0] as $match): ?>
-								<span class="text-muted aslink"><?= str_replace(array('>', '<'), '', $match) ?></span><br>
-							<?php endforeach; ?>
+							<?php
+							foreach ($matches[0] as $match)
+							{
+								$match = trim(preg_replace("/[<>\"_]/", '', $match));
+								$folder = new DirectoryIterator('../lang/');
+								$cnt = 0;
+								foreach ($folder as $file)
+								{
+									if (strpos(($filePath = $file->getPathname()), 'index.php') === false)
+									{
+										$content = file_get_contents($filePath);
+										if (strpos($content, "'$match'") !== false)
+											$cnt++;
+									}
+								}
+								$dispo = $cnt." _traduction(s) disponible(s)_";
+							?>
+								<span class="aslink"><?= $match ?></span>
+								<small class="text-muted float-right"><?= ($cnt > 0) ? "<b>$dispo</b>" : $dispo ?></small>
+								<br>
+							<?php
+							}
+							?>
 						</td>
 					</tr>
 					<?php
@@ -52,15 +72,16 @@ ob_start(); // Page content
 	?>
 	</tbody>
 </table>
+<!-- /CHAINES NON TRADUITES -->
 
-<!-- Tableau des chaînes de traductions -->
+<!-- TRADUCTIONS -->
 <table class="table table-hover table-bordered table-sm">
 	<thead class="thead-dark">
 		<tr>
 			<th scope="col"><i class="fas fa-hashtag"></i></th>
 			<th scope="col"><?= $l['Key'] ?></th>
-			<th scope="col">Valeur</th>
-			<th scope="col">Nombre d'occurrences</th>
+			<th scope="col">_Valeur_</th>
+			<th scope="col">_Nombre d'occurrences_</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -107,8 +128,9 @@ ob_start(); // Page content
 	?>
 	</tbody>
 </table>
+<!-- /TRADUCTIONS -->
 
 <?php
 $pageContent = ob_get_clean();
-$pageTitle = "Traductions";
+$pageTitle = $l['Translations'];
 require '../inc/default.php';
