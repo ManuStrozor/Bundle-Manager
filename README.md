@@ -1,3 +1,4 @@
+![logo](https://image.ibb.co/eieeVT/box.png)
 # Bundle Manager
 
 Bundle Manager is an open-source solution for anyone who wants to manage their game keys. It is a module mainly developed for Prestashop but which wants to be as external as possible.
