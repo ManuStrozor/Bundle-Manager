@@ -4,7 +4,7 @@ Bundle Manager is an open-source solution for anyone who wants to manage their g
 
 ## Screenshots
 
-![screenshot](https://drive.google.com/open?id=1ySvxTeF4KRPPD4bEZ1_Z-D66b1LN8d3B)
+![screenshot](https://image.ibb.co/i6eA4o/bundlemanager_screenshot.jpg)
 
 ## Getting Started
 
