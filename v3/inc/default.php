@@ -109,7 +109,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 								<a class="btn btn-sm btn-outline-secondary" href="#" title="<?= $l['Recipe made today'] ?>">
 				                    <span id="gain"><?= round($gains['total'], 2) ?></span> <i class="fas fa-<?= $l['dollar'] ?>-sign"></i>
 				                </a>
-				                <a class="btn btn-sm btn-outline-secondary" href="orders.php?f=<?= date('Y-m-d') ?>&t=<?= date('Y-m-d') ?>" title="<?= $l['Today\'s orders'] ?>">
+				                <a class="btn btn-sm btn-outline-secondary" href="<?= $root ?>/orders.php?f=<?= date('Y-m-d') ?>&t=<?= date('Y-m-d') ?>" title="<?= $l['Today\'s orders'] ?>">
 			                        <span id="orders"><?= $orders ?></span> <i class="fas fa-shopping-bag"></i>
 			                    </a>
 			                    <a class="btn btn-sm btn-outline-secondary" href="#" title="<?= $l['After sales service'] ?>">
