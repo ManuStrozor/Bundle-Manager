@@ -77,7 +77,7 @@ ob_start(); // Page content
 				else
 				{
 					if ($iago > 0)
-						$ago = $iago." min";
+						$ago = $iago." _min_";
 					else
 						$ago = $l['just now'];
 				}

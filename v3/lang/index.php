@@ -3,6 +3,8 @@ require '../inc/inits.php';
 ob_start(); // Page content
 ?>
 
+<div class="row">
+<div class="col-sm-12 col-xl-6">
 <!-- CHAINES NON TRADUITES -->
 <table class="table table-hover table-bordered table-sm">
 	<thead class="thead-dark">
@@ -73,7 +75,8 @@ ob_start(); // Page content
 	</tbody>
 </table>
 <!-- /CHAINES NON TRADUITES -->
-
+</div>
+<div class="col-sm-12 col-xl-6">
 <!-- TRADUCTIONS -->
 <table class="table table-hover table-bordered table-sm">
 	<thead class="thead-dark">
@@ -81,7 +84,7 @@ ob_start(); // Page content
 			<th scope="col"><i class="fas fa-hashtag"></i></th>
 			<th scope="col"><?= $l['Key'] ?></th>
 			<th scope="col">_Valeur_</th>
-			<th scope="col">_Nombre d'occurrences_</th>
+			<th scope="col">_Occurrences_</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -113,7 +116,7 @@ ob_start(); // Page content
 			}
 		}
 	?>
-		<tr>
+		<tr style="<?= (empty($occurrences[$key])) ? 'background-color:#ff6b81;color:white' : ''; ?>">
 			<th scope="row"><?= $cntRows++ ?></th>
 			<td><?= $key ?></td>
 			<td><?= $trad ?></td>
@@ -129,6 +132,8 @@ ob_start(); // Page content
 	</tbody>
 </table>
 <!-- /TRADUCTIONS -->
+</div>
+</div>
 
 <?php
 $pageContent = ob_get_clean();
