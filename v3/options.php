@@ -109,7 +109,10 @@ ob_start(); // Page content
 	<!-- Langues -->
 	<div class="card" style="width:20rem;margin:10px">
 		<div class="card-body">
-			<h5 class="card-title"><i class="fas fa-language"></i> <?= $l['International'] ?></h5>
+			<h5 class="card-title">
+				<i class="fas fa-language"></i> <?= $l['International'] ?>
+				<small class="text-muted"><a href="lang/">Traductions</a></small>
+			</h5>
 			<h6 class="card-subtitle mb-2 text-muted">Ex: <em>
 				<?php foreach ($_langs as $_lang): ?>
 					<?= $_lang ?>,
