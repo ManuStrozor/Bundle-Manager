@@ -42,6 +42,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			<source src="<?= $root ?>/sound/<?= $notifs_sound['value'] ?>" type="audio/x-wav" />
 		</audio>
 
+		<!-- Header -->
 		<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0">
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?= $root ?>" title="<?= $l['Dashboard'] ?>">
 				<i class="fas fa-box"></i> Bundle Manager
@@ -63,36 +64,46 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			<div class="dropdown">
 				<button class="dropbtn nav-item text-nowrap">
 					<img class="circle-shape" height="30" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['email']) ?>.jpg" />
-					<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?>
+					<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?> <i class="fas fa-angle-down"></i>
 				</button>
+				<!-- Dropdown menu -->
 				<div class="dropdown-content nav-item">
+					<a class="nav-link" href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>"><i class="fas fa-plus"></i> <?= $l['Add keys'] ?></a>
+					<a class="nav-link" href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>"><i class="fas fa-box-open"></i> <?= $l['Create boxes'] ?></a>
+					<hr class="margin-less">
+					<a class="nav-link" href="<?= $root ?>/lang/" title="<?= $l['Translations'] ?>"><i class="fas fa-language"></i> <?= $l['Translations'] ?></a>
+					<a class="nav-link" href="<?= $root ?>/history.php" title="<?= $l['History'] ?>"><i class="fas fa-clock"></i> <?= $l['History'] ?></a>
+					<hr class="margin-less">
 					<a class="nav-link" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>"><i class="fas fa-cog"></i> <?= $l['Settings'] ?></a>
 					<a class="nav-link" href="<?= $root ?>/logout.php" title="<?= $l['Log out'] ?>"><i class="fas fa-power-off"></i> <?= $l['Log out'] ?></a>
 				</div>
+				<!-- /Dropdown menu -->
 			</div>
 			<?php endif; ?>
 		</nav>
+		<!-- /Header -->
 
 		<div class="container-fluid">
 			<div class="row">
+				<!-- Navigation sidebar -->
 				<nav class="col-md-2 d-none d-md-block bg-light sidebar">
 					<div class="sidebar-sticky">
-						<?php if (!empty($_SESSION['logged_in'])): ?>
+					<?php if (!empty($_SESSION['logged_in'])): ?>
 						<ul class="nav flex-column">
 			            	<?php
 			            	$navs = [
-			            		[$l['Dashboard'], 'fas fa-tachometer-alt', '/'],
-			            		[$l['Orders'],	  'fas fa-shopping-bag',   '/orders.php'],
-			            		[$l['Customers'], 'fas fa-users', 		   '/customers.php'],
-			            		[$l['Platforms'], 'fas fa-laptop', 		   '/platforms.php'],
-			            		[$l['Games'], 	  'fas fa-gamepad', 	   '/games.php'],
-			            		[$l['Keys'], 	  'fas fa-key', 		   '/keys.php']
+			            		$l['Dashboard'] => ['href' => '/', 				'icon' => 'fas fa-tachometer-alt'],
+			            		$l['Orders'] 	=> ['href' => '/orders.php', 	'icon' => 'fas fa-shopping-bag'],
+			            		$l['Customers'] => ['href' => '/customers.php', 'icon' => 'fas fa-users'],
+			            		$l['Platforms'] => ['href' => '/platforms.php', 'icon' => 'fas fa-laptop'],
+			            		$l['Games'] 	=> ['href' => '/games.php', 	'icon' => 'fas fa-gamepad'],
+			            		$l['Keys'] 		=> ['href' => '/keys.php', 		'icon' => 'fas fa-key']
 			            	];
 			            	?>
-			            	<?php foreach ($navs as $nav): ?>
+			            	<?php foreach ($navs as $key => $nav): ?>
 				            	<li class="nav-item">
-									<a class="nav-link <?= $pageTitle == $nav[0] ? 'active' : '' ?>" href="<?= $root.$nav[2] ?>">
-										<i class="fas fa-<?= $nav[1] ?>"></i> <?= $nav[0] ?>
+									<a class="nav-link <?= $pageTitle == $key ? 'active' : '' ?>" href="<?= $root.$nav['href'] ?>">
+										<i class="<?= $nav['icon'] ?>"></i> <?= $key ?>
 									</a>
 								</li>
 			            	<?php endforeach; ?>
@@ -100,6 +111,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 					<?php endif; ?>
 					</div>
 				</nav>
+				<!-- /Navigation sidebar -->
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -114,7 +126,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 							<?php endif; ?>
 						</small>
 						<?php if (!empty($_SESSION['logged_in'])): ?>
-						<div class="btn-toolbar mb-2 mb-md-0">
+						<div class="btn-toolbar mb-2 mb-md-0 counter-buttons">
 							<div class="btn-group mr-2">
 								<a class="btn btn-sm btn-outline-secondary" href="#" title="<?= $l['Recipe made today'] ?>">
 				                    <span id="gain"><?= round($gains['total'], 2) ?></span> <i class="fas fa-<?= $l['dollar'] ?>-sign"></i>
@@ -125,10 +137,6 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			                    <a class="btn btn-sm btn-outline-secondary" href="#" title="<?= $l['After sales service'] ?>">
 			                        <span id="messages"><?= $messages ?></span> <i class="fas fa-comment-alt"></i>
 			                    </a>
-							</div>
-							<div class="btn-group mr-2">
-								<a href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i></a>
-								<a href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-box-open"></i></a>
 							</div>
 						</div>
 						<?php endif; ?>
