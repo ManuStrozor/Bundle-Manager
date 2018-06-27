@@ -60,11 +60,16 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 					<input type="hidden" name="o" value="<?= trim($_GET['o']) ?>">
 				</div>
 			</form>
-			<ul class="navbar-nav px-3">
-				<li class="nav-item text-nowrap">
-					<a class="nav-link" href="<?= $root ?>/logout.php" title="<?= $l['Log out'] ?>"><?= $l['Log out'] ?></a>
-				</li>
-			</ul>
+			<div class="dropdown">
+				<button class="dropbtn nav-item text-nowrap">
+					<img class="circle-shape" height="30" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['email']) ?>.jpg" />
+					<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?>
+				</button>
+				<div class="dropdown-content nav-item">
+					<a class="nav-link" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>"><i class="fas fa-cog"></i> <?= $l['Settings'] ?></a>
+					<a class="nav-link" href="<?= $root ?>/logout.php" title="<?= $l['Log out'] ?>"><i class="fas fa-power-off"></i> <?= $l['Log out'] ?></a>
+				</div>
+			</div>
 			<?php endif; ?>
 		</nav>
 
@@ -74,10 +79,6 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 					<div class="sidebar-sticky">
 						<?php if (!empty($_SESSION['logged_in'])): ?>
 						<ul class="nav flex-column">
-							<li class="profile-item">
-			            		<img class="gravatar" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['email']) ?>.jpg" /><br>
-			            		<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?>
-			            	</li>
 			            	<?php
 			            	$navs = [
 			            		[$l['Dashboard'], 'fas fa-tachometer-alt', '/'],
@@ -103,6 +104,15 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 						<h1 class="h2"><?= $pageTitle ?></h1>
+						<small class="arian">
+							<?php foreach ($arianList as $key => $arian): ?>
+								<a href="<?= $arian['href'] ?>"><?= $arian['icon'] ?> <?= $key ?></a>
+								<i class="fas fa-angle-right light-text"></i>
+							<?php endforeach; ?>
+							<?php if (!empty($arianList)): ?>
+								<span class="light-text aslink"><?= $pageTitle ?></span>
+							<?php endif; ?>
+						</small>
 						<?php if (!empty($_SESSION['logged_in'])): ?>
 						<div class="btn-toolbar mb-2 mb-md-0">
 							<div class="btn-group mr-2">
@@ -116,11 +126,9 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			                        <span id="messages"><?= $messages ?></span> <i class="fas fa-comment-alt"></i>
 			                    </a>
 							</div>
-							<div class="btn-group mr-4">
+							<div class="btn-group mr-2">
 								<a href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-plus"></i></a>
 								<a href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-box-open"></i></a>
-								<a href="<?= $root ?>/history.php" title="<?= $l['History'] ?>" class="btn btn-sm btn-outline-secondary"><i class="far fa-clock"></i></a>
-								<a href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>" class="btn btn-sm btn-outline-secondary"><i class="fas fa-cog"></i></a>
 							</div>
 						</div>
 						<?php endif; ?>

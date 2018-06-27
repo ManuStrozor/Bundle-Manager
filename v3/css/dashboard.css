@@ -85,6 +85,12 @@ body {
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
+.arian {
+  position: absolute;
+  float: left !important;
+  margin-top: 46px;
+}
+
 .my-select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -101,18 +107,7 @@ body {
   box-shadow: none;
 }
 
-.profile-item {
-  text-align: center;
-  font-size: 20px;
-  padding-bottom: 30px;
-}
-
-.profile-item:hover {
-  cursor: default;
-}
-
-.gravatar {
-  height: 60px;
+.circle-shape {
   border: 1px solid #eee;
   border-radius: 50%;
 }
@@ -133,6 +128,10 @@ body {
   cursor: pointer;
 }
 
+.light-text {
+  color: dimgray;
+}
+
 #backToTopButton {
   display: none;
   position: fixed;
@@ -147,4 +146,37 @@ input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 
 input[type="text"]::-moz-placeholder { /* Firefox 19+ */
   color: lightgray;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 9px 15px;
+    background-color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.dropdown-content {
+  width: 100%;
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    text-align: left;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
