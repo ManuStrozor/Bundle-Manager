@@ -82,13 +82,23 @@ body {
  * Utilities
  */
 
+#graph {
+  height: 250px;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
 .arian {
   position: absolute;
-  float: left !important;
-  margin-top: 46px;
+  top: 54px;
+}
+
+.counter-buttons {
+  position: absolute;
+  right: 17px;
 }
 
 .my-select {
@@ -128,6 +138,10 @@ body {
   cursor: pointer;
 }
 
+.margin-less {
+  margin: 0;
+}
+
 .light-text {
   color: dimgray;
 }
@@ -150,33 +164,40 @@ input[type="text"]::-moz-placeholder { /* Firefox 19+ */
 
 .dropdown .dropbtn {
   font-size: 16px;
-    border: none;
-    outline: none;
-    color: white;
-    padding: 9px 15px;
-    background-color: inherit;
-    font-family: inherit;
-    cursor: pointer;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 9px 15px;
+  background-color: inherit;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .dropdown-content {
   width: 100%;
-    display: none;
-    position: absolute;
-    background-color: white;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, .2);
+  z-index: 1;
 }
 
 .dropdown-content a {
-    text-decoration: none;
-    text-align: left;
-    display: block;
+  text-decoration: none;
+  text-align: left;
+  display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
+}
+
+@media screen and (max-width: 766px) {
+  .sticky-top {
+    position: inherit;
+  }
 }
