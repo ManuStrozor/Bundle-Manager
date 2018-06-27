@@ -119,4 +119,8 @@ ob_start(); // Head style
 <?php
 $headStyle = ob_get_clean();
 $pageTitle = $l['History'];
+$arianList = array(
+	$l['Dashboard'] => array('href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>'),
+	$l['Settings'] => array('href' => 'settings.php')
+);
 require 'inc/default.php';

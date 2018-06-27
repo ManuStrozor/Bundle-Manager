@@ -232,4 +232,7 @@ E_USER_DEPRECATED";
 <?php
 $pageContent = ob_get_clean();
 $pageTitle = $l['Settings'];
+$arianList = array(
+	$l['Dashboard'] => array('href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>')
+);
 require 'inc/default.php';

@@ -266,4 +266,7 @@ function clipboard(id) {
 <?php
 $headScript = ob_get_clean();
 $pageTitle = $l['Keys'];
+$arianList = array(
+	$l['Dashboard'] => array('href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>')
+);
 require 'inc/default.php';
