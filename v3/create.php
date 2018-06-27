@@ -83,7 +83,7 @@ if (isset($_POST) && !empty($_POST))
 	else
 	{
 		$alertTitle = '<i class="fas fa-exclamation-triangle"></i>';
-		$alertContent = $l['Encryption is incorrectly configured!'].' <a href="options.php">'.$l['Options'].'</a>';
+		$alertContent = $l['Encryption is incorrectly configured!'].' <a href="settings.php">'.$l['Settings'].'</a>';
 	}
 }
 

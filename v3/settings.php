@@ -21,7 +21,7 @@ if (isset($_POST) && !empty($_POST))
     	$db->exec("UPDATE ".PREFIX_."configuration SET value = '$prompt', date_upd = '$datenow' WHERE name = 'BUNDLEMANAGER_LANG'");
     	$logs->new('options', 'language changed to '.$prompt);
 
-    	header('Location:./options.php');
+    	header('Location:./settings.php');
     }
     else if ($setting == "notifs" && in_array($prompt, $_sounds))
     {
@@ -46,7 +46,7 @@ if (isset($_POST) && !empty($_POST))
 
 			if(empty($errors)){
 				move_uploaded_file($file_tmp, "../sound/".$file_name);
-				header('Location:./options.php');
+				header('Location:./settings.php');
 			}else{
 				$alertContent = $errors;
 			}
@@ -81,7 +81,7 @@ if (isset($_POST) && !empty($_POST))
     		$logs->new('options', 'display errors changed to '.$toggle);
     	}
 
-    	header('Location:./options.php');
+    	header('Location:./settings.php');
     }
     else if ($setting == "crypto")
     {
@@ -231,5 +231,5 @@ E_USER_DEPRECATED";
 
 <?php
 $pageContent = ob_get_clean();
-$pageTitle = $l['Options'];
+$pageTitle = $l['Settings'];
 require 'inc/default.php';
