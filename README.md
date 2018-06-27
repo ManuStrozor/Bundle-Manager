@@ -27,3 +27,27 @@ Simply install the module from the Prestashop's modules manager
 * **Emmanuel Turbet.** - [ManuStrozor](https://github.com/ManuStrozor)
 
 See also the list of [contributors](https://github.com/ManuStrozor/Bundle-Manager/graphs/contributors) who participated in this project.
+
+# Version Française
+
+Bundle Manager est une solution open-source pour tous ceux qui veulent gérer leurs clés de jeu. Il s'agit d'un module développé pour Prestashop.
+
+## Mise en route
+
+#### Conditions préalables
+
+-vous avez besoin de Prestashop, évidemment.
+
+-vous devez installer le module Key Manager (Bundle Manager ne peut pas fonctionner sans lui).
+
+-compressez tout le contenu du repo dans bundlemanager.zip
+
+#### Installation
+
+Il suffit d'installer le module à partir du gestionnaire de modules de Prestashop.
+
+## Auteurs
+
+* **Emmanuel Turbet.** -[ManuStrozor](https://github.com/ManuStrozor)
+
+Voir aussi la liste des [contributeurs](https://github.com/ManuStrozor/Bundle-Manager/graphs/contributors) qui ont participé à ce projet.
