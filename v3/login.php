@@ -81,7 +81,7 @@ ob_start(); // Page content
 		</div>
 	</div>
 	<div class="col-auto">
-		<input type="checkbox" name="remember"> _Rester connecté_
+		<input type="checkbox" name="remember"> <?= $l['Stay logged in'] ?>
 		<button type="submit" class="btn btn-primary"><?= $l['Login'] ?></button>
 	</div>
 </form>

@@ -26,7 +26,8 @@ $morris = new Morris($db, 30);
 ob_start(); // Page content
 ?>
 
-<div id="graph" style="height:300px"></div>
+<div id="graph"></div>
+<br>
 <ul class="list-group">
     <li class="list-group-item justify-content-between">
         <form method="POST">
@@ -34,7 +35,7 @@ ob_start(); // Page content
             <strong><?= $l['Key Manager products'] ?></strong>
             <span class="fa-pull-right">
                 <input type="hidden" name="sync"/>
-                <button class="btn btn-link" type="submit">_Synchronize the stock_</button>
+                <button class="btn btn-link" type="submit"><i class="fas fa-band-aid"></i> <?= $l['Fix the stock'] ?></button>
             </span>
         </form>
     </li>

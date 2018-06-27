@@ -7,11 +7,11 @@ ob_start(); // Page content
 <div class="col-sm-12 col-xl-6">
 <!-- CHAINES NON TRADUITES -->
 <table class="table table-hover table-bordered table-sm">
-	<thead class="thead-dark">
+	<thead>
 		<tr>
 			<th scope="col"><i class="fas fa-hashtag"></i></th>
 			<th scope="col">_Fichier_</th>
-			<th scope="col">_Chaînes non traduites_</th>
+			<th scope="col">_Chaînes à traduire_</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -56,10 +56,9 @@ ob_start(); // Page content
 											$cnt++;
 									}
 								}
-								$dispo = $cnt." _traduction(s) disponible(s)_";
 							?>
 								<span class="aslink"><?= $match ?></span>
-								<small class="text-muted float-right"><?= ($cnt > 0) ? "<b>$dispo</b>" : $dispo ?></small>
+								<small class="light-text float-right" style="<?= ($cnt > 0) ? 'color:#2ecc71' : '' ?>"><?= $cnt.' '.$l['available translation(s)'] ?></small>
 								<br>
 							<?php
 							}
@@ -79,7 +78,7 @@ ob_start(); // Page content
 <div class="col-sm-12 col-xl-6">
 <!-- TRADUCTIONS -->
 <table class="table table-hover table-bordered table-sm">
-	<thead class="thead-dark">
+	<thead>
 		<tr>
 			<th scope="col"><i class="fas fa-hashtag"></i></th>
 			<th scope="col"><?= $l['Key'] ?></th>
@@ -122,7 +121,7 @@ ob_start(); // Page content
 			<td><?= $trad ?></td>
 			<td>
 				<?php foreach ($occurrences[$key] as $path => $occur): ?>
-					<span class="text-muted"><b><?= $occur ?></b> <?= $l['in'] ?> <span class="aslink"><?= str_replace('../', '', $path) ?></span></span><br>
+					<span class="light-text"><b><?= $occur ?></b> <?= $l['in'] ?> <span class="aslink"><?= str_replace('../', '', $path) ?></span></span><br>
 				<?php endforeach; ?>
 			</td>
 		</tr>
