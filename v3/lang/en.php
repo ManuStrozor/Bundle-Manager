@@ -24,7 +24,6 @@
 	'Add keys' => 'Add keys',
 	'Create boxes' => 'Create boxes',
 	'Settings' => 'Settings',
-	'Options' => 'Options',
 	'Search' => 'Search',
 	'Log out' => 'Log out',
 	'yes' => 'yes',
@@ -104,5 +103,9 @@
 	'Notifications' => 'Notifications',
 	'Type the file name ".wav" and apply.' => 'Type the file name ".wav" and apply.',
 	'Audio file not found.' => 'Audio file not found.',
-	'Type the error types to display' => 'Type the error types to display'
+	'Type the error types to display' => 'Type the error types to display',
+	'Fix the stock' => 'Fix the stock',
+	'Download' => 'Download',
+	'Stay logged in' => 'Stay logged in',
+	'available translation(s)' => 'available translation(s)'
 );

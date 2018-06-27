@@ -24,7 +24,6 @@
 	'Add keys' => 'Ajouter des clés',
 	'Create boxes' => 'Créer des box',
 	'Settings' => 'Paramètres',
-	'Options' => 'Options',
 	'Search' => 'Rechercher',
 	'Log out' => 'Se déconnecter',
 	'yes' => 'oui',
@@ -104,5 +103,9 @@
 	'Notifications' => 'Notifications',
 	'Type the file name ".wav" and apply.' => 'Tapez le nom du fichier ".wav" puis appliquez.',
 	'Audio file not found.' => 'Fichier audio introuvable.',
-	'Type the error types to display' => 'Tapez les types d\'erreurs à afficher'
+	'Type the error types to display' => 'Tapez les types d\'erreurs à afficher',
+	'Fix the stock' => 'Réparer le stock',
+	'Download' => 'Télécharger',
+	'Stay logged in' => 'Rester connecté',
+	'available translation(s)' => 'traduction(s) disponible(s)'
 );
