@@ -48,4 +48,5 @@ if (!empty($_SESSION['logged_in']) && strpos($_SERVER['REQUEST_URI'], 'login.php
 // Traductions
 $lang = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_LANG'");
 $file = dirname(__DIR__).'/lang/'.$lang['value'].'.php';
-require (file_exists($file)) ? $file : dirname(__DIR__).'/lang/en.php';
+$default = (!empty($_GET['l'])) ? $_GET['l'] : 'en';
+require (file_exists($file) && empty($_GET['l'])) ? $file : dirname(__DIR__).'/lang/'.$default.'.php';
