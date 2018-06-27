@@ -11,7 +11,7 @@ $now = new DateTime("NOW");
 if (isset($_POST['export_table']))
 {
     $backupDatabase = new Backup_Database(DB_SERV, DB_USER, DB_PASS, DB_NAME, $_POST['export_table']);
-    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">_Télécharger_ '.$backupDatabase->getBackupFile().'</a>';
+    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">'.$l['Download'].' '.$backupDatabase->getBackupFile().'</a>';
 
     $alertTitle = '<i class="fas fa-info-circle"></i>';
     $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? "_L'exportation s'est bien déroulée._ ".$link : "_Une erreur est survenue !_";
@@ -134,7 +134,7 @@ ob_start(); // Page content
 <?php
 $pageContent = ob_get_clean();
 $pageTitle = $l['Games'];
-$arianList = array(
-	$l['Dashboard'] => array('href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>')
-);
+$arianList = [
+	$l['Dashboard'] => ['href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>']
+];
 require 'inc/default.php';

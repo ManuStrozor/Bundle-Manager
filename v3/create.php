@@ -201,4 +201,7 @@ ob_start(); // Head Style
 <?php
 $headStyle = ob_get_clean();
 $pageTitle = $l['Create boxes'];
+$arianList = [
+	$l['Dashboard'] => ['href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>']
+];
 require 'inc/default.php';

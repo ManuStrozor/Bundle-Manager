@@ -77,7 +77,7 @@ ob_start(); // Page content
 				else
 				{
 					if ($iago > 0)
-						$ago = $iago." _min_";
+						$ago = $iago." min";
 					else
 						$ago = $l['just now'];
 				}
@@ -119,8 +119,7 @@ ob_start(); // Head style
 <?php
 $headStyle = ob_get_clean();
 $pageTitle = $l['History'];
-$arianList = array(
-	$l['Dashboard'] => array('href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>'),
-	$l['Settings'] => array('href' => 'settings.php')
-);
+$arianList = [
+	$l['Dashboard'] => ['href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>']
+];
 require 'inc/default.php';

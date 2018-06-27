@@ -115,4 +115,7 @@ ob_start(); // Page content
 <?php
 $pageContent = ob_get_clean();
 $pageTitle = $l['Add keys'];
+$arianList = [
+	$l['Dashboard'] => ['href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>']
+];
 require 'inc/default.php';

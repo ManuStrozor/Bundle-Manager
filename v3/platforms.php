@@ -107,7 +107,7 @@ ob_start(); // Head scripts
 <?php
 $headScript = ob_get_clean();
 $pageTitle = $l['Platforms'];
-$arianList = array(
-    $l['Dashboard'] => array('href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>')
-);
+$arianList = [
+    $l['Dashboard'] => ['href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>']
+];
 require 'inc/default.php';
