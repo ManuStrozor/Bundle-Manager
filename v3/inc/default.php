@@ -71,10 +71,9 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 					<a class="nav-link" href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>"><i class="fas fa-plus"></i> <?= $l['Add keys'] ?></a>
 					<a class="nav-link" href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>"><i class="fas fa-box-open"></i> <?= $l['Create boxes'] ?></a>
 					<hr class="margin-less">
-					<a class="nav-link" href="<?= $root ?>/lang/" title="<?= $l['Translations'] ?>"><i class="fas fa-language"></i> <?= $l['Translations'] ?></a>
 					<a class="nav-link" href="<?= $root ?>/history.php" title="<?= $l['History'] ?>"><i class="fas fa-clock"></i> <?= $l['History'] ?></a>
-					<hr class="margin-less">
 					<a class="nav-link" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>"><i class="fas fa-cog"></i> <?= $l['Settings'] ?></a>
+					<hr class="margin-less">
 					<a class="nav-link" href="<?= $root ?>/logout.php" title="<?= $l['Log out'] ?>"><i class="fas fa-power-off"></i> <?= $l['Log out'] ?></a>
 				</div>
 				<!-- /Dropdown menu -->
