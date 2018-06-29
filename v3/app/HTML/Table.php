@@ -17,7 +17,7 @@ class Table
 		$this->columns = $columns;
 	}
 
-	public function render()
+	public function render($export = false)
 	{
 		foreach ($this->params['th'] as $k => $t) break;
 		$id_field = $k;
@@ -25,8 +25,13 @@ class Table
 		ob_start();
 		?>
 
-		<div class="table-container mb-3">
-			<?= (!empty($this->params['pagination'])) ? $this->params['pagination']->render() : '' ?>
+		<div class="table-container box-shadow mb-3">
+			<?php if ($export != false): ?>
+				<form class="float-right mr-1 mb-3" method="POST" name="exportForm">
+				    <input type="hidden" name="export_table" value="<?= $export ?>" />
+				    <a href="#" onclick="window.document.exportForm.submit();return false;"><i class="fas fa-download"></i></a>
+				</form>
+			<?php endif; ?>
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>

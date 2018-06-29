@@ -8,7 +8,7 @@ class BundleManager extends Module
 	public function __construct()
 	{
     	$this->name = 'bundlemanager';
-    	$this->version = '3.1.1';
+    	$this->version = '3.1.2';
     	$this->confirmUninstall = $this->l('Click OK to delete Bundle Manager module.');
     	$this->need_instance = 0;
     	$this->tab = 'front_office_features';
