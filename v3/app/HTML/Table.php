@@ -25,10 +25,10 @@ class Table
 		ob_start();
 		?>
 
-		<div class="table-container bg-light">
+		<div class="table-container mb-3">
 			<?= (!empty($this->params['pagination'])) ? $this->params['pagination']->render() : '' ?>
 			<table class="table table-hover table-bordered">
-				<thead style="background-color:white">
+				<thead>
 					<tr>
 						<th scope="col"><i class="fas fa-hashtag"></i></th>
 						<?php foreach ($this->params['th'] as $key => $th): ?>
@@ -48,7 +48,7 @@ class Table
 								$sort = "fa-sort-down";
 							?>
 							<th scope="col">
-								<a href="?s=<?= trim($_GET['s']) ?>&o=<?= $key ?>+<?= $order ?>" style="color:#212529;display:block;margin:-.75rem;padding:.75rem">
+								<a class="myth" href="?s=<?= trim($_GET['s']) ?>&o=<?= $key ?>+<?= $order ?>">
 									<?= $th ?>
 									<i class="float-right fas <?= $sort ?>"></i>
 								</a>

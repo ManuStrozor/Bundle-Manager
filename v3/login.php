@@ -57,11 +57,8 @@ if (!empty($email) && !empty($passwd)) {
 ob_start(); // Page content
 ?>
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-	<i class="fas fa-info-circle"></i> <?= $l['Use your Prestashop IDs to login.'] ?>
-	<button type="button" class="close" data-dismiss="alert" aria-label="<?= $l['Close'] ?>">
-		<span aria-hidden="true"><i class="fas fa-times"></i></span>
-	</button>
+<div class="alert alert-success">
+    <strong><i class="fas fa-info-circle"></i></strong> <?= $l['Use your Prestashop IDs to login.'] ?>
 </div>
 <form class="form-inline" method="POST" style="text-align:center;margin-top:30px">
 	<div class="col-auto">

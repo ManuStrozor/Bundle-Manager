@@ -1,5 +1,6 @@
 body {
   font-size: .875rem;
+  background-color: #ecf0f5;
 }
 
 /*
@@ -82,8 +83,48 @@ body {
  * Utilities
  */
 
+.login-box {
+  margin: 20% auto;
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+}
+
+a, button.close {
+  outline: none;
+}
+
+.alert {
+  border-radius: 3px;
+  margin: 0 0 20px 0;
+  padding: 15px 30px 15px 15px;
+  border: 0;
+  border-left: 5px solid rgba(0, 0, 0, .25);
+}
+
+.alert-info {
+  background-color: #f6e58d;
+}
+
+.alert-success {
+  color: white;
+  background-color: #78e08f;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: .25rem;
+  font-size: inherit;
+}
+
 #graph {
   height: 250px;
+  background-color: white;
   border: 1px solid rgba(0, 0, 0, .125);
   border-radius: .25rem;
 }
@@ -117,16 +158,19 @@ body {
   box-shadow: none;
 }
 
-.circle-shape {
+.avatar {
   border: 1px solid #eee;
   border-radius: 50%;
+  margin-top: -3px;
+  margin-right: 5px;
 }
 
 .table-container{
-  margin: 15px 0;
-  padding: 15px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  background-color: white;
+  padding: 10px;
+  border-radius: 2px;
+  border-top: 3px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .cursor-pointer {
@@ -138,12 +182,41 @@ body {
   cursor: pointer;
 }
 
+.notlink:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
 .margin-less {
   margin: 0;
 }
 
 .light-text {
+  color: darkgray;
+}
+
+.white-text {
+  color: white;
+}
+
+.black-text {
+  color: black;
+}
+
+.dark-text {
   color: dimgray;
+}
+
+.navbar-links {
+  position: relative;
+  color: #eee;
+  padding: .8rem 1rem;
+  font-size: 1rem;
+}
+
+.navbar-links:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, .15);
 }
 
 #backToTopButton {
@@ -163,14 +236,18 @@ input[type="text"]::-moz-placeholder { /* Firefox 19+ */
 }
 
 .dropdown .dropbtn {
-  font-size: 16px;
   border: none;
-  outline: none;
   color: white;
-  padding: 9px 15px;
+  margin: 0;
+  padding: .75rem 1rem;
+  font-size: 1rem;
   background-color: inherit;
   font-family: inherit;
   cursor: pointer;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgba(0, 0, 0, .15);
 }
 
 .dropdown-content {
@@ -194,6 +271,46 @@ input[type="text"]::-moz-placeholder { /* Firefox 19+ */
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.label {
+  position: absolute;
+  text-align: center;
+  font-size: 8px;
+  padding: 2px 3px;
+  line-height: .9;
+  display: inline;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.label-success {
+    background-color: #5cb85c;
+}
+
+.label-warning {
+    background-color: #f0ad4e;
+}
+
+.label-danger {
+    background-color: #d9534f;
+}
+
+.myth {
+  color: #212529;
+  display: block;
+  margin: -.75rem;
+  padding: .75rem;
+}
+
+.myth:hover {
+  color: #212529;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 766px) {

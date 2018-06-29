@@ -24,7 +24,7 @@ class Pagination
 		ob_start();
 		?>
 
-		<span style="margin-left:20px"><?= explode('[]', $this->text)[0] ?></span>
+		<span><?= explode('[]', $this->text)[0] ?></span>
 		<div class="pagination" style="display:inline-block">
 			<a class="page-link dropdown-toggle" href="#<?= $this->tab ?>" role="button" id="maxrows" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     			<?= $this->db->getMaxrows() ?>
@@ -38,7 +38,7 @@ class Pagination
 			</div>
 		</div>
 		<span><?= sprintf(explode('[]', $this->text)[1], $this->db->getTotal()) ?></span>
-		<ul class="pagination fa-pull-right" style="margin-right:20px">
+		<ul class="pagination fa-pull-right">
 			<li class="page-item <?php if ($p == 1) echo 'disabled'; ?>">
 				<a class="page-link" href="<?= $this->goToPage(1) ?>">
 					<span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>

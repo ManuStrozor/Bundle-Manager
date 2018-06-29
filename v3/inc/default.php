@@ -37,14 +37,13 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 		<?= $headScript ?>
 	</head>
 	<body>
-		<button onclick="topFunction()" type="button" id="backToTopButton" class="btn btn-dark"><i class="fas fa-chevron-circle-up"></i></button>
+		<button onclick="topFunction()" type="button" id="backToTopButton" class="btn btn-dark"><i class="fas fa-angle-up"></i></button>
 		<audio id="notifs_audio">
 			<source src="<?= $root ?>/sound/<?= $notifs_sound['value'] ?>" type="audio/x-wav" />
 		</audio>
-
 		<!-- Header -->
 		<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0">
-			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?= $root ?>" title="<?= $l['Dashboard'] ?>">
+			<a class="navbar-brand col-sm-12 col-md-3 col-lg-2 mr-0 align-center" href="<?= $root ?>" title="<?= $l['Dashboard'] ?>">
 				<i class="fas fa-box"></i> Bundle Manager
 			</a>
             <?php if (!empty($_SESSION['logged_in'])): ?>
@@ -61,10 +60,30 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 					<input type="hidden" name="o" value="<?= trim($_GET['o']) ?>">
 				</div>
 			</form>
+			<!-- counters -->
+			<a class="nav-link navbar-links" href="#" title="<?= $l['Recipe made today'] ?>">
+				<img src="<?= $root ?>/img/icons/wallet.svg" />
+				<?php if ($gains['total'] > 0): ?>
+					<span id="gain" class="label label-success"><?= round($gains['total'], 2) ?></span>
+				<?php endif; ?>
+			</a>
+			<a class="nav-link navbar-links" href="<?= $root ?>/orders.php?f=<?= date('Y-m-d') ?>&t=<?= date('Y-m-d') ?>" title="<?= $l['Today\'s orders'] ?>">
+	            <img src="<?= $root ?>/img/icons/bag.svg" />
+	            <?php if ($orders > 0): ?>
+					<span id="orders" class="label label-warning"><?= $orders ?></span>
+				<?php endif; ?>
+	        </a>
+	        <a class="nav-link navbar-links" href="#" title="<?= $l['After sales service'] ?>">
+	            <img src="<?= $root ?>/img/icons/chat.svg" />
+	            <?php if ($messages > 0): ?>
+					<span id="messages" class="label label-danger"><?= $messages ?></span>
+				<?php endif; ?>
+	        </a>
+	        <!-- /counters -->
 			<div class="dropdown">
-				<button class="dropbtn nav-item text-nowrap">
-					<img class="circle-shape" height="30" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['email']) ?>.jpg" />
-					<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?> <i class="fas fa-angle-down"></i>
+				<button class="dropbtn text-nowrap">
+					<img class="avatar" height="25" src="https://www.gravatar.com/avatar/<?= md5($_SESSION['email']) ?>.jpg" />
+					<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?>
 				</button>
 				<!-- Dropdown menu -->
 				<div class="dropdown-content nav-item">
@@ -72,12 +91,15 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 					<a class="nav-link" href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>"><i class="fas fa-box-open"></i> <?= $l['Create boxes'] ?></a>
 					<hr class="margin-less">
 					<a class="nav-link" href="<?= $root ?>/history.php" title="<?= $l['History'] ?>"><i class="fas fa-clock"></i> <?= $l['History'] ?></a>
-					<a class="nav-link" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>"><i class="fas fa-cog"></i> <?= $l['Settings'] ?></a>
+					<!-- <a class="nav-link" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>"><i class="fas fa-cog"></i> <?= $l['Settings'] ?></a> -->
 					<hr class="margin-less">
 					<a class="nav-link" href="<?= $root ?>/logout.php" title="<?= $l['Log out'] ?>"><i class="fas fa-power-off"></i> <?= $l['Log out'] ?></a>
 				</div>
 				<!-- /Dropdown menu -->
 			</div>
+			<a class="nav-link navbar-links" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>">
+				<img src="<?= $root ?>/img/icons/settings.svg" height="18" font-weight="bold" />
+			</a>
 			<?php endif; ?>
 		</nav>
 		<!-- /Header -->
@@ -85,7 +107,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 		<div class="container-fluid">
 			<div class="row">
 				<!-- Navigation sidebar -->
-				<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<nav class="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar">
 					<div class="sidebar-sticky">
 					<?php if (!empty($_SESSION['logged_in'])): ?>
 						<ul class="nav flex-column">
@@ -113,36 +135,21 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 				<!-- /Navigation sidebar -->
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-1">
 						<h1 class="h2"><?= $pageTitle ?></h1>
-						<small class="arian">
+						<small>
 							<?php foreach ($arianList as $key => $arian): ?>
-								<a href="<?= $arian['href'] ?>"><?= $arian['icon'] ?> <?= $key ?></a>
-								<i class="fas fa-angle-right light-text"></i>
+								<a class="black-text notlink" href="<?= $arian['href'] ?>"><?= $arian['icon'] ?> <?= $key ?></a>
+								<i class="fas fa-angle-right light-text m-1"></i>
 							<?php endforeach; ?>
 							<?php if (!empty($arianList)): ?>
-								<span class="light-text aslink"><?= $pageTitle ?></span>
+								<span class="dark-text"><?= $pageTitle ?></span>
 							<?php endif; ?>
 						</small>
-						<?php if (!empty($_SESSION['logged_in'])): ?>
-						<div class="btn-toolbar mb-2 mb-md-0 counter-buttons">
-							<div class="btn-group mr-2">
-								<a class="btn btn-sm btn-outline-secondary" href="#" title="<?= $l['Recipe made today'] ?>">
-				                    <span id="gain"><?= round($gains['total'], 2) ?></span> <i class="fas fa-<?= $l['dollar'] ?>-sign"></i>
-				                </a>
-				                <a class="btn btn-sm btn-outline-secondary" href="<?= $root ?>/orders.php?f=<?= date('Y-m-d') ?>&t=<?= date('Y-m-d') ?>" title="<?= $l['Today\'s orders'] ?>">
-			                        <span id="orders"><?= $orders ?></span> <i class="fas fa-shopping-bag"></i>
-			                    </a>
-			                    <a class="btn btn-sm btn-outline-secondary" href="#" title="<?= $l['After sales service'] ?>">
-			                        <span id="messages"><?= $messages ?></span> <i class="fas fa-comment-alt"></i>
-			                    </a>
-							</div>
-						</div>
-						<?php endif; ?>
 					</div>
 					<?php if (!empty($alertTitle) || !empty($alertContent)): ?>
-		            <div class="alert alert-warning" role="alert" id="myAlert">
-		                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		            <div class="alert alert-info" role="alert" id="myAlert">
+		                <button type="button" class="close" data-dismiss="alert" aria-label="<?= $l['Close'] ?>">
 		                    <i class="fas fa-times"></i>
 		                    <span class="sr-only"><?= $l['Close'] ?></span>
 		                </button>
@@ -160,7 +167,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 		        <div class="modal-content">
 		            <div class="modal-header">
 		                <h4 class="modal-title" id="myModalLabel"><i class="fas fa-question"></i> <?= $l['Help'] ?></h4>
-		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $l['Close'] ?>">
 		                    <i class="fas fa-times"></i>
 		                    <span class="sr-only"><?= $l['Close'] ?></span>
 		                </button>

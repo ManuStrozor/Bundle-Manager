@@ -3,7 +3,6 @@
 	'on' => 'on',
 	'in' => 'in',
 	'$' => '$',
-	'dollar' => 'dollar',
 	'g:i a' => 'g:i a',
 	'No result were found' => 'No result were found',
 	'Displaying' => 'Displaying',

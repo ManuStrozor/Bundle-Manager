@@ -1,6 +1,8 @@
 <?php
 use \DateTime;
 
+//require 'https://raw.githubusercontent.com/ovh/php-ovh/master/src/Api.php';
+
 require 'inc/inits.php';
 
 $_langs = array('fr', 'en');
@@ -130,6 +132,8 @@ ob_start(); // Page content
 			</form>
 		</div>
 	</div>
+	<!-- /Langues -->
+
 	<!-- Notifications -->
 	<div class="card" style="width:20rem;margin:10px">
 		<div class="card-body">
@@ -169,6 +173,8 @@ ob_start(); // Page content
 			<?php endif; ?>
 		</div>
 	</div>
+	<!-- /Notifications -->
+
 	<!-- Debug -->
 	<div class="card" style="width:25rem;margin:10px">
 		<div class="card-body">
@@ -211,6 +217,8 @@ E_USER_DEPRECATED";
 			</form>
 		</div>
 	</div>
+	<!-- /Debug -->
+
 	<!-- Chiffrement -->
 	<div class="card" style="width:25rem;margin:10px">
 		<div class="card-body">
@@ -227,6 +235,41 @@ E_USER_DEPRECATED";
 			</form>
 		</div>
 	</div>
+	<!-- /Chiffrement -->
+
+	<!-- Storage -->
+	<div class="card" style="width:25rem;margin:10px">
+		<div class="card-body">
+			<h5 class="card-title"><i class="fas fa-hdd"></i> _Backup Storage_</h5>
+			<h6 class="card-subtitle mb-2 text-muted"></h6>
+			<br>
+			<p>
+				<?php
+				function dirSize($path) {
+				    $bytestotal = 0;
+				    $path = realpath($path);
+				    if($path!==false && $path!='' && file_exists($path)){
+				        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
+				            $bytestotal += $object->getSize();
+				        }
+				    }
+				    return $bytestotal;
+				}
+				function printSize($title, $b, $round = 2) {
+					$type = array('', 'K', 'M', 'G', 'T');
+					$c = 0;
+					while($b >= 1024) {
+						$b /= 1024;
+						$c++;
+					}
+					return $title.' : '.round($b, $round).' '.$type[$c].'o';
+				}
+				?>
+				<?= printSize("_Total used space_", dirSize('./backup/')) ?>
+			</p>
+		</div>
+	</div>
+	<!-- /Storage -->
 </div>
 
 <?php

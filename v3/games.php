@@ -11,7 +11,7 @@ $now = new DateTime("NOW");
 if (isset($_POST['export_table']))
 {
     $backupDatabase = new Backup_Database(DB_SERV, DB_USER, DB_PASS, DB_NAME, $_POST['export_table']);
-    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">'.$l['Download'].' '.$backupDatabase->getBackupFile().'</a>';
+    $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">'.$l['Download'].'</a>';
 
     $alertTitle = '<i class="fas fa-info-circle"></i>';
     $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? "_L'exportation s'est bien déroulée._ ".$link : "_Une erreur est survenue !_";
@@ -93,7 +93,7 @@ $table = new Table(array(
 ob_start(); // Page content
 ?>
 
-<form method="POST" name="exportForm">
+<form class="mb-3" method="POST" name="exportForm">
     <input type="hidden" name="export_table" value="<?= GAMES_TABLE ?>" />
     <a href="#" title="<?= $l['Export'] ?> <?= $l['Games'] ?>" onclick="window.document.exportForm.submit();return false;"><i class="fas fa-save"></i> <?= $l['Export'] ?> <?= $l['Games'] ?></a>
 </form>

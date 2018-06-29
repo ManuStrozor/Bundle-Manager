@@ -3,7 +3,6 @@
 	'on' => 'sur',
 	'in' => 'dans',
 	'$' => '€',
-	'dollar' => 'euro',
 	'g:i a' => 'H:i',
 	'No result were found' => 'Aucun résultat n\'a été trouvé',
 	'Displaying' => 'Affichage',

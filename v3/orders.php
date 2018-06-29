@@ -100,12 +100,11 @@ ob_start(); // Page content
 </form>
 
 <?php if (!empty($orders)): ?>
-	<caption>
+	<div class="mb-3">
 		<?php $tva = $total_ttc['sum']-$total_ht['sum']; ?>
 		<strong><?= $l['Total excl. tax'] ?>:</strong> <?= round($total_ht['sum'], 2) ?> <?= $l['$'] ?> <?php if ($tva > 0) echo "(".round($total_ttc['sum'], 2)." - ".round($tva, 2).")"; ?>
 		<i class="fas fa-shopping-basket"></i> <?= round(($total_ht['sum'] / $db->getTotal()), 2) ?> <?= $l['$'] ?>
-	</caption>
-	<br>
+	</div>
 	<?= $table->render() ?>
 <?php else: ?>
 	<?= $l['No result were found'] ?>
