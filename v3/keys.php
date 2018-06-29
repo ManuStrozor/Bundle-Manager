@@ -131,13 +131,8 @@ $table->moreColumns(array(
 ob_start(); // Page content
 ?>
 
-<form class="mb-3" method="POST" name="exportForm">
-    <input type="hidden" name="export_table" value="<?= KEYS_TABLE ?>" />
-    <a href="#" title="<?= $l['Export'] ?> <?= $l['Keys'] ?>" onclick="window.document.exportForm.submit();return false;"><i class="fas fa-save"></i> <?= $l['Export'] ?> <?= $l['Keys'] ?></a>
-</form>
-
 <?php if (!empty($keys)): ?>
-	<?= $table->render() ?>
+	<?= $table->render(KEYS_TABLE) ?>
 <?php else: ?>
 	<?= $l['No result were found'] ?>
 <?php endif; ?>

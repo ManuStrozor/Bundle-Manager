@@ -83,43 +83,12 @@ body {
  * Utilities
  */
 
-.login-box {
-  margin: 20% auto;
-  width: 300px;
-  height: 300px;
-  border: 1px solid red;
-}
-
 a, button.close {
   outline: none;
 }
 
-.alert {
-  border-radius: 3px;
-  margin: 0 0 20px 0;
-  padding: 15px 30px 15px 15px;
-  border: 0;
-  border-left: 5px solid rgba(0, 0, 0, .25);
-}
-
-.alert-info {
-  background-color: #f6e58d;
-}
-
-.alert-success {
-  color: white;
-  background-color: #78e08f;
-}
-
 .align-center {
-  text-align: center;
-}
-
-.close {
-  position: absolute;
-  top: 0;
-  right: .25rem;
-  font-size: inherit;
+  text-align: center !important;
 }
 
 #graph {
@@ -131,11 +100,6 @@ a, button.close {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-.arian {
-  position: absolute;
-  top: 54px;
-}
 
 .counter-buttons {
   position: absolute;
@@ -169,8 +133,6 @@ a, button.close {
   background-color: white;
   padding: 10px;
   border-radius: 2px;
-  border-top: 3px solid #ccc;
-  border-bottom: 1px solid #ccc;
 }
 
 .cursor-pointer {
@@ -183,12 +145,7 @@ a, button.close {
 }
 
 .notlink:hover {
-  color: inherit;
   text-decoration: none;
-}
-
-.margin-less {
-  margin: 0;
 }
 
 .light-text {
@@ -311,6 +268,11 @@ input[type="text"]::-moz-placeholder { /* Firefox 19+ */
 .myth:hover {
   color: #212529;
   text-decoration: none;
+}
+
+.card, .box-shadow {
+  border: 0;
+  box-shadow: 0 0 1px rgba(0,0,0,.125),0 1px 3px rgba(0,0,0,.2);
 }
 
 @media screen and (max-width: 766px) {

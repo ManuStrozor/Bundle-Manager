@@ -4,7 +4,7 @@ ob_start(); // Page content
 ?>
 
 <!-- CHAINES NON TRADUITES -->
-<div class="table-container mb-3">
+<div class="table-container box-shadow mb-3">
 	<h3 class="h5 mb-3">_Missing translation strings_</h3>
 	<table class="table table-hover table-bordered table-sm">
 		<thead>
@@ -77,7 +77,7 @@ ob_start(); // Page content
 <!-- /CHAINES NON TRADUITES -->
 
 <!-- TRADUCTIONS -->
-<div class="table-container mb-3">
+<div class="table-container box-shadow mb-3">
 	<h3 class="h5 mb-3">_Available translation strings_</h3>
 	<table class="table table-hover table-bordered table-sm">
 		<thead>

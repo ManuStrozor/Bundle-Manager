@@ -24,7 +24,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Bundle Manager | <?= $pageTitle ?></title>
+		<title>BundleMANAGER | <?= $pageTitle ?></title>
 		<link rel="icon" href="<?= $root ?>/img/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
 		<?= $headMeta ?>
@@ -44,7 +44,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 		<!-- Header -->
 		<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0">
 			<a class="navbar-brand col-sm-12 col-md-3 col-lg-2 mr-0 align-center" href="<?= $root ?>" title="<?= $l['Dashboard'] ?>">
-				<i class="fas fa-box"></i> Bundle Manager
+				<i class="fas fa-box"></i> <b>Bundle</b>MANAGER 3.1
 			</a>
             <?php if (!empty($_SESSION['logged_in'])): ?>
 			<form method="GET" name="mysearch" style="display:contents" onsubmit="setTarget()">
@@ -62,19 +62,19 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			</form>
 			<!-- counters -->
 			<a class="nav-link navbar-links" href="#" title="<?= $l['Recipe made today'] ?>">
-				<img src="<?= $root ?>/img/icons/wallet.svg" />
+				<img src="<?= $root ?>/img/icons/wallet.svg" alt="<?= $l['Recipe made today'] ?>">
 				<?php if ($gains['total'] > 0): ?>
 					<span id="gain" class="label label-success"><?= round($gains['total'], 2) ?></span>
 				<?php endif; ?>
 			</a>
 			<a class="nav-link navbar-links" href="<?= $root ?>/orders.php?f=<?= date('Y-m-d') ?>&t=<?= date('Y-m-d') ?>" title="<?= $l['Today\'s orders'] ?>">
-	            <img src="<?= $root ?>/img/icons/bag.svg" />
+	            <img src="<?= $root ?>/img/icons/bag.svg" alt="<?= $l['Today\'s orders'] ?>">
 	            <?php if ($orders > 0): ?>
 					<span id="orders" class="label label-warning"><?= $orders ?></span>
 				<?php endif; ?>
 	        </a>
 	        <a class="nav-link navbar-links" href="#" title="<?= $l['After sales service'] ?>">
-	            <img src="<?= $root ?>/img/icons/chat.svg" />
+	            <img src="<?= $root ?>/img/icons/chat.svg" alt="<?= $l['After sales service'] ?>">
 	            <?php if ($messages > 0): ?>
 					<span id="messages" class="label label-danger"><?= $messages ?></span>
 				<?php endif; ?>
@@ -89,16 +89,15 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 				<div class="dropdown-content nav-item">
 					<a class="nav-link" href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>"><i class="fas fa-plus"></i> <?= $l['Add keys'] ?></a>
 					<a class="nav-link" href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>"><i class="fas fa-box-open"></i> <?= $l['Create boxes'] ?></a>
-					<hr class="margin-less">
+					<hr class="m-0">
 					<a class="nav-link" href="<?= $root ?>/history.php" title="<?= $l['History'] ?>"><i class="fas fa-clock"></i> <?= $l['History'] ?></a>
-					<!-- <a class="nav-link" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>"><i class="fas fa-cog"></i> <?= $l['Settings'] ?></a> -->
-					<hr class="margin-less">
+					<hr class="m-0">
 					<a class="nav-link" href="<?= $root ?>/logout.php" title="<?= $l['Log out'] ?>"><i class="fas fa-power-off"></i> <?= $l['Log out'] ?></a>
 				</div>
 				<!-- /Dropdown menu -->
 			</div>
 			<a class="nav-link navbar-links" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>">
-				<img src="<?= $root ?>/img/icons/settings.svg" height="18" font-weight="bold" />
+				<img src="<?= $root ?>/img/icons/settings.svg" height="18" alt="<?= $l['Settings'] ?>">
 			</a>
 			<?php endif; ?>
 		</nav>
@@ -137,25 +136,27 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-1">
 						<h1 class="h2"><?= $pageTitle ?></h1>
-						<small>
+						<span>
 							<?php foreach ($arianList as $key => $arian): ?>
-								<a class="black-text notlink" href="<?= $arian['href'] ?>"><?= $arian['icon'] ?> <?= $key ?></a>
-								<i class="fas fa-angle-right light-text m-1"></i>
+								<a class="notlink" href="<?= $arian['href'] ?>"><?= $key ?></a>
+								<span class="dark-text m-1">/</span>
 							<?php endforeach; ?>
 							<?php if (!empty($arianList)): ?>
 								<span class="dark-text"><?= $pageTitle ?></span>
 							<?php endif; ?>
-						</small>
+						</span>
 					</div>
+
+					<!-- Alert -->
 					<?php if (!empty($alertTitle) || !empty($alertContent)): ?>
-		            <div class="alert alert-info" role="alert" id="myAlert">
-		                <button type="button" class="close" data-dismiss="alert" aria-label="<?= $l['Close'] ?>">
-		                    <i class="fas fa-times"></i>
-		                    <span class="sr-only"><?= $l['Close'] ?></span>
-		                </button>
-		                <strong><?= $alertTitle ?></strong> <?= $alertContent ?>
+		            <div class="alert alert-<?= (!empty($alertType)) ? $alertType : 'info' ?> alert-dismissible">
+		                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>
+		                <h5><?= $alertTitle ?></h5>
+		                <?= $alertContent ?>
 		            </div>
 		            <?php endif; ?>
+		            <!-- /Alert -->
+
 					<?= $pageContent ?>
 				</main>
 			</div>

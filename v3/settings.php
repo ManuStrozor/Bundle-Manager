@@ -91,6 +91,7 @@ if (isset($_POST) && !empty($_POST))
     }
     else
 	{
+		$alertType = 'warning';
 		$alertTitle = '<i class="fas fa-exclamation-triangle"></i>';
 		$alertContent = $alert;
 	}
@@ -109,7 +110,7 @@ ob_start(); // Page content
 
 <div style="display:flex;flex-wrap:wrap;">
 	<!-- Langues -->
-	<div class="card" style="width:20rem;margin:10px">
+	<div class="card m-1">
 		<div class="card-body">
 			<h5 class="card-title">
 				<i class="fas fa-language"></i> <?= $l['International'] ?>
@@ -135,7 +136,7 @@ ob_start(); // Page content
 	<!-- /Langues -->
 
 	<!-- Notifications -->
-	<div class="card" style="width:20rem;margin:10px">
+	<div class="card m-1">
 		<div class="card-body">
 			<h5 class="card-title">
 				<i class="fas fa-bell"></i> <?= $l['Notifications'] ?>
@@ -176,7 +177,7 @@ ob_start(); // Page content
 	<!-- /Notifications -->
 
 	<!-- Debug -->
-	<div class="card" style="width:25rem;margin:10px">
+	<div class="card m-1">
 		<div class="card-body">
 			<h5 class="card-title">
 				<i class="fas fa-bug"></i> _Debug_
@@ -220,7 +221,7 @@ E_USER_DEPRECATED";
 	<!-- /Debug -->
 
 	<!-- Chiffrement -->
-	<div class="card" style="width:25rem;margin:10px">
+	<div class="card m-1">
 		<div class="card-body">
 			<h5 class="card-title"><i class="fas fa-file-code"></i> <?= $l['Encryption'] ?></h5>
 			<h6 class="card-subtitle mb-2 text-muted">Ex: <em>modules/keymanager/keycrypt.php</em></h6>
@@ -238,7 +239,7 @@ E_USER_DEPRECATED";
 	<!-- /Chiffrement -->
 
 	<!-- Storage -->
-	<div class="card" style="width:25rem;margin:10px">
+	<div class="card m-1">
 		<div class="card-body">
 			<h5 class="card-title"><i class="fas fa-hdd"></i> _Backup Storage_</h5>
 			<h6 class="card-subtitle mb-2 text-muted"></h6>

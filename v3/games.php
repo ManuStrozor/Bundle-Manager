@@ -93,13 +93,8 @@ $table = new Table(array(
 ob_start(); // Page content
 ?>
 
-<form class="mb-3" method="POST" name="exportForm">
-    <input type="hidden" name="export_table" value="<?= GAMES_TABLE ?>" />
-    <a href="#" title="<?= $l['Export'] ?> <?= $l['Games'] ?>" onclick="window.document.exportForm.submit();return false;"><i class="fas fa-save"></i> <?= $l['Export'] ?> <?= $l['Games'] ?></a>
-</form>
-
 <?php if (!empty($games)): ?>
-	<?= $table->render() ?>
+	<?= $table->render(GAMES_TABLE) ?>
 <?php else: ?>
 	<?= $l['No result were found'] ?>
 <?php endif; ?>

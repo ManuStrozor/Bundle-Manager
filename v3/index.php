@@ -26,9 +26,8 @@ $morris = new Morris($db, 30);
 ob_start(); // Page content
 ?>
 
-<div id="graph"></div>
-<br>
-<ul class="list-group">
+<div id="graph" class="box-shadow mb-3"></div>
+<ul class="list-group box-shadow mb-3">
     <li class="list-group-item justify-content-between">
         <form method="POST">
             <img src="/modules/keymanager/logo.png" height="45" />
