@@ -50,6 +50,22 @@ body {
   text-transform: uppercase;
 }
 
+.sidebar .nav-item {
+  background-color: transparent;
+  margin: 0 10px;
+}
+
+.sidebar .nav-item:hover {
+  background-color: rgba(0, 0, 0, .05);
+  border-radius: 3px;
+}
+
+.sidebar .active a {
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 3px;
+  color: white;
+}
+
 /*
  * Navbar
  */

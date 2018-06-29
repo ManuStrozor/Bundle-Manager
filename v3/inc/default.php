@@ -121,8 +121,8 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			            	];
 			            	?>
 			            	<?php foreach ($navs as $key => $nav): ?>
-				            	<li class="nav-item">
-									<a class="nav-link <?= $pageTitle == $key ? 'active' : '' ?>" href="<?= $root.$nav['href'] ?>">
+				            	<li class="nav-item <?= $pageTitle == $key ? 'active' : '' ?>">
+									<a class="nav-link" href="<?= $root.$nav['href'] ?>">
 										<i class="<?= $nav['icon'] ?>"></i> <?= $key ?>
 									</a>
 								</li>
