@@ -61,7 +61,7 @@ if (!empty($email) && !empty($passwd)) {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Bundle Manager | <?= $l['Connection'] ?></title>
+  <title>BundleMANAGER | <?= $l['Connection'] ?></title>
   <link rel="icon" href="<?= $root ?>/img/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
   <link href="<?= $root ?>/css/bootstrap-4.0.0.min.css" rel="stylesheet" />
