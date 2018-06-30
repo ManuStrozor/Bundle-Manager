@@ -1,8 +1,6 @@
 <?php
 use \DateTime;
 
-//require 'https://raw.githubusercontent.com/ovh/php-ovh/master/src/Api.php';
-
 require 'inc/inits.php';
 
 $_langs = array('fr', 'en');

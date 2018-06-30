@@ -107,6 +107,7 @@ if (!empty($email) && !empty($passwd)) {
       <!-- /.lockscreen credentials -->
     </div>
     <!-- /.lockscreen-item -->
+    <div class="align-center mb-3"><input type="checkbox" name="remember"> <?= $l['Stay logged in'] ?></div>
   </form>
   <div class="help-block align-center">
     <?= $l['Use your Prestashop IDs to login.'] ?>

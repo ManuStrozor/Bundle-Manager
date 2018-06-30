@@ -62,19 +62,19 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 			</form>
 			<!-- counters -->
 			<a class="nav-link navbar-links" href="#" title="<?= $l['Recipe made today'] ?>">
-				<img src="<?= $root ?>/img/icons/wallet.svg" alt="<?= $l['Recipe made today'] ?>">
+				<img src="<?= $root ?>/img/icons/wallet.svg">
 				<?php if ($gains['total'] > 0): ?>
 					<span id="gain" class="label label-success"><?= round($gains['total'], 2) ?></span>
 				<?php endif; ?>
 			</a>
 			<a class="nav-link navbar-links" href="<?= $root ?>/orders.php?f=<?= date('Y-m-d') ?>&t=<?= date('Y-m-d') ?>" title="<?= $l['Today\'s orders'] ?>">
-	            <img src="<?= $root ?>/img/icons/bag.svg" alt="<?= $l['Today\'s orders'] ?>">
+	            <img src="<?= $root ?>/img/icons/bag.svg">
 	            <?php if ($orders > 0): ?>
 					<span id="orders" class="label label-warning"><?= $orders ?></span>
 				<?php endif; ?>
 	        </a>
 	        <a class="nav-link navbar-links" href="#" title="<?= $l['After sales service'] ?>">
-	            <img src="<?= $root ?>/img/icons/chat.svg" alt="<?= $l['After sales service'] ?>">
+	            <img src="<?= $root ?>/img/icons/chat.svg">
 	            <?php if ($messages > 0): ?>
 					<span id="messages" class="label label-danger"><?= $messages ?></span>
 				<?php endif; ?>
@@ -97,7 +97,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 				<!-- /Dropdown menu -->
 			</div>
 			<a class="nav-link navbar-links" href="<?= $root ?>/settings.php" title="<?= $l['Settings'] ?>">
-				<img src="<?= $root ?>/img/icons/settings.svg" height="18" alt="<?= $l['Settings'] ?>">
+				<img src="<?= $root ?>/img/icons/settings.svg">
 			</a>
 			<?php endif; ?>
 		</nav>
