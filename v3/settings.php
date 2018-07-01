@@ -3,9 +3,11 @@ use \DateTime;
 
 require 'inc/inits.php';
 
-$_langs = array('fr', 'en');
-$_sounds = scandir('sound');
-$_sounds = array_diff($_sounds, ['.', '..', 'index.html']);
+$_langs = ['fr', 'en'];
+$_sounds = array_diff(
+	scandir('sound'),
+	['.', '..', 'index.html']
+);
 
 $notifs_sound_autoplay = false;
 
@@ -16,38 +18,34 @@ if (isset($_POST) && !empty($_POST))
 
     extract($_POST);
     $prompt = trim($prompt);
+
     if ($setting == "language" && in_array($prompt, $_langs))
     {
     	$db->exec("UPDATE ".PREFIX_."configuration SET value = '$prompt', date_upd = '$datenow' WHERE name = 'BUNDLEMANAGER_LANG'");
     	$logs->new('options', 'language changed to '.$prompt);
-
     	header('Location:./settings.php');
     }
     else if ($setting == "notifs" && in_array($prompt, $_sounds))
     {
-    	if (!empty($_FILES['upload']['size']))
+    	$upload = $_FILES['upload'];
+    	if (!empty($upload['size']))
     	{
-    		$alertTitle = '<i class="fas fa-upload"></i>';
-    		$errors = '';
-			$file_name = $_FILES['upload']['name'];
-			$file_size = $_FILES['upload']['size'];
-			$file_tmp = $_FILES['upload']['tmp_name'];
-			$file_ext = strtolower(end(explode('.', $file_name)));
+			$ext = strtolower(end(explode('.', $upload['name'])));
+			$errors = '';
 
-			$extensions = array('wav');
+			if (!in_array($ext, array('wav'))) $errors .= $l['Please choose a WAV file.'];
 
-			if(!in_array($file_ext, $extensions)){
-				$errors .= $l['Please choose a WAV file.'];
-			}
+			if ($upload['size'] >= 2097152) $errors .= $l['Size must be less than 2 MB.'];
 
-			if($file_size >= 2097152){
-				$errors .= $l['Size must be less than 2 MB.'];
-			}
-
-			if(empty($errors)){
-				move_uploaded_file($file_tmp, "../sound/".$file_name);
+			if (empty($errors))
+			{
+				move_uploaded_file($upload['tmp_name'], "../sound/".$upload['name']);
 				header('Location:./settings.php');
-			}else{
+			}
+			else
+			{
+				$alertType = 'warning';
+				$alertTitle = '<i class="fas fa-upload"></i>';
 				$alertContent = $errors;
 			}
     	}

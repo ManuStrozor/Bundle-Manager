@@ -26,32 +26,59 @@ $morris = new Morris($db, 30);
 ob_start(); // Page content
 ?>
 
-<div id="graph" class="box-shadow mb-3"></div>
-<ul class="list-group box-shadow mb-3">
-    <li class="list-group-item justify-content-between">
-        <form method="POST">
-            <img src="/modules/keymanager/logo.png" height="45" />
-            <strong><?= $l['Key Manager products'] ?></strong>
-            <span class="fa-pull-right">
-                <input type="hidden" name="sync"/>
-                <button class="btn btn-link" type="submit"><i class="fas fa-band-aid"></i> <?= $l['Fix the stock'] ?></button>
-            </span>
-        </form>
-    </li>
-    <?php foreach ($products as $product): ?>
-    <?php
-    $stock = $db->fetchColumn("SELECT COUNT(id_keymanager) FROM ".PREFIX_."keymanager WHERE id_keymanager_product = {$product['id_keymanager_product']} AND id_order_detail = 0 AND active = 1");
-    $color = ($stock < 1) ? "#e74c3c" : "#007bff";
-    ?>
-    <li class="list-group-item justify-content-between">
-        <img src="/img/tmp/product_mini_<?= $product['id_image'] ?>.jpg?time=<?= time() ?>" /> <?= $product['name'] ?>
-        <span class="fa-pull-right" style="color:<?= ($stock < 1) ? "#e74c3c" : "#27ae60" ?>">
-            <?= ($stock < 1) ? $l['out of stock'] : $stock.' '.$l['in stock'] ?>
-            <?= ($stock != $product['stav']) ? '<kbd>'.$product['stav'].'</kbd>' : null ?>
-        </span>
-    </li>
-    <?php endforeach; ?>
-</ul>
+<div class="row">
+    <div class="col-12 col-xl-6">
+        <div id="graph" class="box-shadow mb-3"></div>
+        <ul class="list-group box-shadow mb-3">
+            <li class="list-group-item">
+                <strong>Pages</strong>
+            </li>
+            <?php
+            $pages = [
+                $l['Orders']    => ['href' => 'orders.php',    'icon' => 'fas fa-shopping-bag'],
+                $l['Customers'] => ['href' => 'customers.php', 'icon' => 'fas fa-users'],
+                $l['Platforms'] => ['href' => 'platforms.php', 'icon' => 'fas fa-laptop'],
+                $l['Games']     => ['href' => 'games.php',     'icon' => 'fas fa-gamepad'],
+                $l['Keys']      => ['href' => 'keys.php',      'icon' => 'fas fa-key']
+            ];
+            ?>
+            <?php foreach ($pages as $key => $page): ?>
+                <li class="list-group-item">
+                    <a class="nav-link notlink" href="<?= $page['href'] ?>">
+                        <i class="<?= $page['icon'] ?>"></i> <?= $key ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="col-12 col-xl-6">
+        <ul class="list-group box-shadow mb-3">
+            <li class="list-group-item">
+                <form method="POST">
+                    <img src="/modules/keymanager/logo.png" height="40">
+                    <strong><?= $l['Key Manager products'] ?></strong>
+                    <small class="float-right">
+                        <input type="hidden" name="sync"/>
+                        <button class="btn btn-link" type="submit"><?= $l['Fix the stock'] ?></button>
+                    </small>
+                </form>
+            </li>
+            <?php foreach ($products as $product): ?>
+            <?php
+            $stock = $db->fetchColumn("SELECT COUNT(id_keymanager) FROM ".PREFIX_."keymanager WHERE id_keymanager_product = {$product['id_keymanager_product']} AND id_order_detail = 0 AND active = 1");
+            $color = ($stock < 1) ? "#e74c3c" : "#007bff";
+            ?>
+            <li class="list-group-item">
+                <img src="/img/tmp/product_mini_<?= $product['id_image'] ?>.jpg?time=<?= time() ?>" /> <?= $product['name'] ?>
+                <small class="float-right" style="color:<?= ($stock < 1) ? "#e74c3c" : "#27ae60" ?>">
+                    <?= ($stock < 1) ? $l['out of stock'] : $stock.' '.$l['in stock'] ?>
+                    <?= ($stock != $product['stav']) ? '<kbd>'.$product['stav'].'</kbd>' : null ?>
+                </small>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
 
 <?php
 $pageContent = ob_get_clean();

@@ -96,6 +96,109 @@ body {
 }
 
 /*
+ * Login Page
+ */
+
+.lockscreen-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-top: 10%;
+}
+
+.lockscreen-logo {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.lockscreen-logo a {
+  color: #444;
+}
+
+.lockscreen .lockscreen-name {
+  text-align: center;
+  font-weight: 600;
+}
+
+.lockscreen-name {
+  border: 0;
+  background-color: transparent;
+  width: auto;
+  margin: auto;
+}
+
+.lockscreen-name:focus {
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.lockscreen-item {
+  border-radius: 4px;
+  padding: 0;
+  background: #fff;
+  position: relative;
+  margin: 20px auto 20px auto;
+  width: 290px;
+}
+
+.lockscreen-image {
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  top: -25px;
+  background: #fff;
+  padding: 5px;
+  z-index: 10;
+}
+
+.lockscreen-image > img {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.lockscreen-credentials {
+  margin-left: 70px;
+}
+
+.lockscreen-credentials .form-control {
+  border: 0;
+}
+
+.lockscreen-credentials .btn {
+  background-color: #fff;
+  border: 0;
+  padding: 0 10px;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group > .form-control:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .form-control {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+}
+
+.input-group-append {
+  margin-left: -1px;
+  display: flex;
+}
+
+/*
  * Utilities
  */
 
@@ -139,7 +242,7 @@ a, button.close {
 }
 
 .avatar {
-  border: 1px solid #eee;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16),0 3px 6px rgba(0,0,0,.23);
   border-radius: 50%;
   margin-top: -3px;
   margin-right: 5px;

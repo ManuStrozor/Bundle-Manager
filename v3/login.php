@@ -68,7 +68,28 @@ if (!empty($email) && !empty($passwd)) {
   <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="<?= $root ?>/css/dashboard.css" rel="stylesheet" />
-  <link href="<?= $root ?>/css/login.css" rel="stylesheet" />
+  <style type="text/css">
+    body, html {
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: left;
+    }
+    a {
+      color: #007bff;
+      background-color: transparent;
+    }
+    img {
+      vertical-align: middle;
+      border-style: none;
+    }
+  </style>
   <script src="<?= $root ?>/js/jquery-3.3.1.min.js"></script>
   <script src="<?= $root ?>/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript">
@@ -80,39 +101,30 @@ if (!empty($email) && !empty($passwd)) {
   </script>
 </head>
 <body class="hold-transition lockscreen" onload="updateImg()">
-<!-- Automatic element centering -->
-<div class="lockscreen-wrapper">
-  <div class="lockscreen-logo">
-    <a href="./"><b>Bundle</b>MANAGER</a>
-  </div>
-  <form method="POST">
-    <!-- User name -->
-    <input type="email" name="email" id="typed-email" class="form-control lockscreen-name" placeholder="<?= $l['E-mail address'] ?>" oninput="updateImg()" required>
-    <!-- START LOCK SCREEN ITEM -->
-    <div class="lockscreen-item">
-      <!-- lockscreen image -->
-      <div class="lockscreen-image">
-        <img id="print-email" src="" alt="User Image">
-      </div>
-      <!-- /.lockscreen-image -->
-      <!-- lockscreen credentials (contains the form) -->
-      <div class="lockscreen-credentials">
-        <div class="input-group">
-          <input type="password" name="passwd" class="form-control" placeholder="<?= $l['Password'] ?>" required>
-          <div class="input-group-append">
-            <button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+  <div class="lockscreen-wrapper">
+    <div class="lockscreen-logo">
+      <a class="notlink" href="./"><b>Bundle</b>MANAGER</a>
+    </div>
+    <form method="POST">
+      <input type="email" name="email" id="typed-email" class="form-control lockscreen-name" placeholder="<?= $l['E-mail address'] ?>" oninput="updateImg()" required>
+      <div class="lockscreen-item">
+        <div class="lockscreen-image">
+          <img id="print-email" src="" alt="User Image">
+        </div>
+        <div class="lockscreen-credentials">
+          <div class="input-group">
+            <input type="password" name="passwd" class="form-control" placeholder="<?= $l['Password'] ?>" required>
+            <div class="input-group-append">
+              <button type="submit" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+            </div>
           </div>
         </div>
       </div>
-      <!-- /.lockscreen credentials -->
+      <div class="align-center mb-3"><input type="checkbox" name="remember"> <?= $l['Stay logged in'] ?></div>
+    </form>
+    <div class="help-block align-center">
+      <?= $l['Use your Prestashop IDs to login.'] ?>
     </div>
-    <!-- /.lockscreen-item -->
-    <div class="align-center mb-3"><input type="checkbox" name="remember"> <?= $l['Stay logged in'] ?></div>
-  </form>
-  <div class="help-block align-center">
-    <?= $l['Use your Prestashop IDs to login.'] ?>
   </div>
-</div>
-<!-- /.center -->
 </body>
 </html>
