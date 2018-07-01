@@ -112,7 +112,7 @@
 	'Size must be less than 2 MB.' => 'La taille doit être inférieure à 2 Mo.',
 	'Debug' => 'Déboguer',
 	'Backup Storage' => 'Stockage des sauvegardes',
-	'Total used space' => 'Superficie totale utilisée',
+	'Total used space' => 'Espace totale utilisé',
 	'The export went well.' => 'L\'exportation s\'est bien passée.',
 	'An error has occurred!' => 'Une erreur s\'est produite !',
 	'Game was modified!' => 'Le jeu a été modifié !',
