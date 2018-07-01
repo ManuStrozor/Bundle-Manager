@@ -2,22 +2,19 @@
 
 $root = '/modules/bundlemanager/v3';
 
-if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
+$refresh_interval = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_REFRESH_INTERVAL'");
+$notifs_enabled = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_NOTIFICATIONS_ENABLED'");
+$notifs_sound = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_NOTIFICATIONS_SOUND'");
 
-    $refresh_interval = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_REFRESH_INTERVAL'");
-    $notifs_enabled = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_NOTIFICATIONS_ENABLED'");
-    $notifs_sound = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_NOTIFICATIONS_SOUND'");
+$d = date('Y-m-d');
 
-    $d = date('Y-m-d');
+$gains = $db->fetch("SELECT SUM(total_paid_tax_excl) as total FROM ".PREFIX_."orders WHERE date_add BETWEEN '$d' AND '$d 23:59:59' AND valid = 1");
+$messages = $db->fetchColumn("SELECT COUNT(id_customer_thread) FROM ".PREFIX_."customer_thread WHERE status LIKE '%open%'");
+$orders = $db->fetchColumn("SELECT COUNT(id_order) FROM ".PREFIX_."orders WHERE date_add BETWEEN '$d' AND '$d 23:59:59' AND valid = 1");
 
-    $gains = $db->fetch("SELECT SUM(total_paid_tax_excl) as total FROM ".PREFIX_."orders WHERE date_add BETWEEN '$d' AND '$d 23:59:59' AND valid = 1");
-    $messages = $db->fetchColumn("SELECT COUNT(id_customer_thread) FROM ".PREFIX_."customer_thread WHERE status LIKE '%open%'");
-    $orders = $db->fetchColumn("SELECT COUNT(id_order) FROM ".PREFIX_."orders WHERE date_add BETWEEN '$d' AND '$d 23:59:59' AND valid = 1");
-
-    $keys_selected = (strpos($_SERVER['REQUEST_URI'], 'keys.php')) ? 'selected' : '';
-    $games_selected = (strpos($_SERVER['REQUEST_URI'], 'games.php')) ? 'selected' : '';
-    $customers_selected = (strpos($_SERVER['REQUEST_URI'], 'customers.php')) ? 'selected' : '';
-}
+$keys_selected = (strpos($_SERVER['REQUEST_URI'], 'keys.php')) ? 'selected' : '';
+$games_selected = (strpos($_SERVER['REQUEST_URI'], 'games.php')) ? 'selected' : '';
+$customers_selected = (strpos($_SERVER['REQUEST_URI'], 'customers.php')) ? 'selected' : '';
 
 ?>
 <!DOCTYPE html>
@@ -25,12 +22,13 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 	<head>
 		<meta charset="utf-8">
 		<title>BundleMANAGER | <?= $pageTitle ?></title>
-		<link rel="icon" href="<?= $root ?>/img/favicon.ico" />
+		<link rel="icon" href="<?= $root ?>/img/favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
 		<?= $headMeta ?>
-		<link href="<?= $root ?>/css/bootstrap-4.0.0.min.css" rel="stylesheet" />
-		<link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
-		<link href="<?= $root ?>/css/dashboard.css" rel="stylesheet" />
+		<link href="<?= $root ?>/css/bootstrap-4.0.0.min.css" rel="stylesheet">
+		<link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+		<link href="<?= $root ?>/css/dashboard.css" rel="stylesheet">
 		<?= $headStyle ?>
 		<script src="<?= $root ?>/js/jquery-3.3.1.min.js"></script>
 		<script src="<?= $root ?>/js/bootstrap.bundle.min.js"></script>
@@ -39,7 +37,7 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 	<body>
 		<button onclick="topFunction()" type="button" id="backToTopButton" class="btn btn-dark" title="<?= $l['Back to top'] ?>"><i class="fas fa-angle-up"></i></button>
 		<audio id="notifs_audio">
-			<source src="<?= $root ?>/sound/<?= $notifs_sound['value'] ?>" type="audio/x-wav" />
+			<source src="<?= $root ?>/sound/<?= $notifs_sound['value'] ?>" type="audio/x-wav">
 		</audio>
 		<!-- Header -->
 		<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0">
