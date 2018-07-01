@@ -12,7 +12,7 @@ if (isset($_POST['export_table']))
     $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">'.$l['Download'].'</a>';
 
     $alertTitle = '<i class="fas fa-info-circle"></i>';
-    $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? "_L'exportation s'est bien déroulée._ ".$link : "_Une erreur est survenue !_";
+    $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? $l['The export went well.']." ".$link : $l['An error has occurred!'];
 }
 
 // Edit
@@ -28,7 +28,7 @@ if (isset($_POST['edit']) && !empty($_POST['edit']))
 		$db->exec("UPDATE ".KEYS_TABLE." SET game_id = {$_POST['gid']} WHERE id = {$_POST['edit']}");
 		$changed = $db->fetch("SELECT (SELECT name FROM ".GAMES_TABLE." WHERE id = k.game_id) AS gname FROM ".KEYS_TABLE." k WHERE id = {$_POST['edit']}");
 		$logs->new('data', 'Game of '.$key['game_key'].' changed to '.$changed['gname']);
-		$alertContent .= "_Game was modified !_";
+		$alertContent .= $l['Game was modified!'];
 	}
 
 	if ($key['platform_id'] != $_POST['pid'])
@@ -36,12 +36,12 @@ if (isset($_POST['edit']) && !empty($_POST['edit']))
 		$db->exec("UPDATE ".KEYS_TABLE." SET platform_id = {$_POST['pid']} WHERE id = {$_POST['edit']}");
 		$changed = $db->fetch("SELECT (SELECT name FROM ".PLATFORMS_TABLE." WHERE id = k.platform_id) AS pname FROM ".KEYS_TABLE." k WHERE id = {$_POST['edit']}");
 		$logs->new('data', 'Platform of '.$key['game_key'].' changed to '.$changed['pname']);
-		$alertContent .= "_Platform was modified !_";
+		$alertContent .= $l['Platform was modified!'];
 	}
 
 	if ($key['game_id'] == $_POST['gid'] && $key['platform_id'] == $_POST['pid'])
 	{
-		$alertContent .= "_No modifications !_";
+		$alertContent .= $l['No modifications!'];
 	}
 }
 

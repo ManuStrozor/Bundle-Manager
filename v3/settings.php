@@ -37,11 +37,11 @@ if (isset($_POST) && !empty($_POST))
 			$extensions = array('wav');
 
 			if(!in_array($file_ext, $extensions)){
-				$errors .= "_Please choose a WAV file._";
+				$errors .= $l['Please choose a WAV file.'];
 			}
 
 			if($file_size >= 2097152){
-				$errors .= "_Size must be less than 2 MB._";
+				$errors .= $l['Size must be less than 2 MB.'];
 			}
 
 			if(empty($errors)){
@@ -178,7 +178,7 @@ ob_start(); // Page content
 	<div class="card m-1">
 		<div class="card-body">
 			<h5 class="card-title">
-				<i class="fas fa-bug"></i> _Debug_
+				<i class="fas fa-bug"></i> <?= $l['Debug'] ?>
 				<i class="fas fa-toggle-<?= (!$errors_enabled['value']) ? 'off' : 'on' ?> cursor-pointer" style="color:#007bff" onclick="window.document.toggleErrors.submit()"></i>
 			</h5>
 			<h6 class="card-subtitle mb-2 text-muted">Ex: <em>E_ALL & ~E_NOTICE & ~E_WARNING</em></h6>
@@ -239,7 +239,7 @@ E_USER_DEPRECATED";
 	<!-- Storage -->
 	<div class="card m-1">
 		<div class="card-body">
-			<h5 class="card-title"><i class="fas fa-hdd"></i> _Backup Storage_</h5>
+			<h5 class="card-title"><i class="fas fa-hdd"></i> <?= $l['Backup Storage'] ?></h5>
 			<h6 class="card-subtitle mb-2 text-muted"></h6>
 			<br>
 			<p>
@@ -264,7 +264,7 @@ E_USER_DEPRECATED";
 					return $title.' : '.round($b, $round).' '.$type[$c].'o';
 				}
 				?>
-				<?= printSize("_Total used space_", dirSize('./backup/')) ?>
+				<?= printSize($l['Total used space'], dirSize('./backup/')) ?>
 			</p>
 		</div>
 	</div>

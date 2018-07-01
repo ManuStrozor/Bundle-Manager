@@ -37,14 +37,14 @@ if (!strpos($_SERVER['REQUEST_URI'], 'notinstalled.php')) {
 		<?= $headScript ?>
 	</head>
 	<body>
-		<button onclick="topFunction()" type="button" id="backToTopButton" class="btn btn-dark"><i class="fas fa-angle-up"></i></button>
+		<button onclick="topFunction()" type="button" id="backToTopButton" class="btn btn-dark" title="<?= $l['Back to top'] ?>"><i class="fas fa-angle-up"></i></button>
 		<audio id="notifs_audio">
 			<source src="<?= $root ?>/sound/<?= $notifs_sound['value'] ?>" type="audio/x-wav" />
 		</audio>
 		<!-- Header -->
 		<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0">
-			<a class="navbar-brand col-sm-12 col-md-3 col-lg-2 mr-0 align-center" href="<?= $root ?>" title="<?= $l['Dashboard'] ?>">
-				<i class="fas fa-box"></i> <b>Bundle</b>MANAGER 3.1
+			<a class="navbar-brand col-sm-12 col-md-3 col-lg-2 mr-0 align-center" href="<?= $root ?>" title="BundleMANAGER 3.1">
+				<i class="fas fa-box"></i> <b>Bundle</b>MANAGER
 			</a>
             <?php if (!empty($_SESSION['logged_in'])): ?>
 			<form method="GET" name="mysearch" style="display:contents" onsubmit="setTarget()">

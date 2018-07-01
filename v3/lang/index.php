@@ -5,13 +5,13 @@ ob_start(); // Page content
 
 <!-- CHAINES NON TRADUITES -->
 <div class="table-container box-shadow mb-3">
-	<h3 class="h5 mb-3">_Missing translation strings_</h3>
+	<h3 class="h5 mb-3"><?= $l['Missing translation strings'] ?></h3>
 	<table class="table table-hover table-bordered table-sm">
 		<thead>
 			<tr>
 				<th scope="col"><i class="fas fa-hashtag"></i></th>
-				<th scope="col">_Fichier_</th>
-				<th scope="col">_Chaînes à traduire_</th>
+				<th scope="col"><?= $l['File'] ?></th>
+				<th scope="col"><?= $l['Strings to translate'] ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,7 +23,7 @@ ob_start(); // Page content
 			'../inc/',
 			'../lang/'
 		);
-		$cntRows = 1;
+		$cntRows = 0;
 		foreach ($dirs as $dir)
 		{
 			$folder = new DirectoryIterator($dir);
@@ -38,7 +38,7 @@ ob_start(); // Page content
 			    	{
 			    		?>
 			    		<tr>
-							<th scope="row"><?= $cntRows++ ?></th>
+							<th scope="row"><?= $cntRows+1 ?></th>
 							<td><?= str_replace('../', '', $filePath) ?></td>
 							<td>
 								<?php
@@ -66,6 +66,7 @@ ob_start(); // Page content
 							</td>
 						</tr>
 						<?php
+						$cntRows++;
 			    	}
 				}
 			}
@@ -73,19 +74,20 @@ ob_start(); // Page content
 		?>
 		</tbody>
 	</table>
+	<?= (!$cntRows) ? $l['No result were found'] : ''; ?>
 </div>
 <!-- /CHAINES NON TRADUITES -->
 
 <!-- TRADUCTIONS -->
 <div class="table-container box-shadow mb-3">
-	<h3 class="h5 mb-3">_Available translation strings_</h3>
+	<h3 class="h5 mb-3"><?= $l['Available translation strings'] ?></h3>
 	<table class="table table-hover table-bordered table-sm">
 		<thead>
 			<tr>
 				<th scope="col"><i class="fas fa-hashtag"></i></th>
 				<th scope="col"><?= $l['Key'] ?></th>
-				<th scope="col">_Valeur_</th>
-				<th scope="col">_Occurrences_</th>
+				<th scope="col"><?= $l['Value'] ?></th>
+				<th scope="col"><?= $l['Occurrences'] ?></th>
 			</tr>
 		</thead>
 		<tbody>

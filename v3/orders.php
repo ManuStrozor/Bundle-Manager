@@ -42,8 +42,8 @@ $orders = $db->selectAll(array(
 ));
 
 // Data for caption (top-left of table)
-$total_ht = $db->fetch("SELECT SUM(total_paid_tax_excl / (SELECT conversion_rate FROM ".PREFIX_."currency cy WHERE cy.id_currency = o.id_currency)) AS sum FROM ".PREFIX_."orders o WHERE date_add BETWEEN '$f' AND '$t' AND valid = 1");
-$total_ttc = $db->fetch("SELECT SUM(total_paid_real / (SELECT conversion_rate FROM ".PREFIX_."currency cy WHERE cy.id_currency = o.id_currency)) AS sum FROM ".PREFIX_."orders o WHERE date_add BETWEEN '$f' AND '$t' AND valid = 1");
+$total_ht = $db->fetch("SELECT SUM(total_paid_tax_excl / (SELECT conversion_rate FROM ".PREFIX_."currency cy WHERE cy.id_currency = o.id_currency)) AS sum FROM ".PREFIX_."orders o WHERE date_add BETWEEN '$f' AND '$t 23:59:59' AND valid = 1");
+$total_ttc = $db->fetch("SELECT SUM(total_paid_real / (SELECT conversion_rate FROM ".PREFIX_."currency cy WHERE cy.id_currency = o.id_currency)) AS sum FROM ".PREFIX_."orders o WHERE date_add BETWEEN '$f' AND '$t 23:59:59' AND valid = 1");
 
 // Pagination HTML
 $pagination = new Pagination(array(

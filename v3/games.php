@@ -14,7 +14,7 @@ if (isset($_POST['export_table']))
     $link = '<a href="backup/'.$backupDatabase->getBackupFile().'">'.$l['Download'].'</a>';
 
     $alertTitle = '<i class="fas fa-info-circle"></i>';
-    $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? "_L'exportation s'est bien déroulée._ ".$link : "_Une erreur est survenue !_";
+    $alertContent = $backupDatabase->backupTables($_POST['export_table']) ? $l['The export went well.']." ".$link : $l['An error has occurred!'];
 }
 
 // Rename
@@ -33,7 +33,7 @@ if (isset($_POST['rename']) && !empty($_POST['rename']))
 	}
 	else
 	{
-		$alertContent = $game['name']." _hasn't been modified_";
+		$alertContent = $game['name']." ".$l['hasn\'t been modified'];
 	}
 }
 

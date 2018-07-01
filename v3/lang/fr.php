@@ -33,7 +33,6 @@
 	'Connection' => 'Connexion',
 	'E-mail address' => 'Adresse e-mail',
 	'Password' => 'Mot de passe',
-	'Login' => 'Se connecter',
 	'Oops' => 'Oups',
 	'Incorrect IDs' => 'Identifiants incorrects',
 	'Sorry' => 'Désolé',
@@ -92,7 +91,6 @@
 	'The box %s has been created and added in Key Manager !' => 'La box %s a été créée et ajoutée dans Key Manager !',
 	'The %d boxes %s has been created and added in Key Manager !' => 'Les %d box %s ont été créées et ajoutées dans Key Manager !',
 	'Encryption is incorrectly configured!' => 'Le chiffrement est mal configuré!',
-	'Export' => 'Exporter',
 	'International' => 'International',
 	'Type the language tag and apply.' => 'Tapez le tag de la langue puis appliquez.',
 	'Apply' => 'Appliquer',
@@ -106,5 +104,46 @@
 	'Fix the stock' => 'Réparer le stock',
 	'Download' => 'Télécharger',
 	'Stay logged in' => 'Rester connecté',
-	'available translation(s)' => 'traduction(s) disponible(s)'
+	'available translation(s)' => 'traduction(s) disponible(s)',
+	'The export went well.' => 'L\'exportation s\'est bien passée.',
+	'An error has occurred!' => 'Une erreur s\'est produite !',
+	'hasn\'t been modified' => 'n\'a pas été modifié',
+	'Please choose a WAV file.' => 'Veuillez choisir un fichier WAV.',
+	'Size must be less than 2 MB.' => 'La taille doit être inférieure à 2 Mo.',
+	'Debug' => 'Déboguer',
+	'Backup Storage' => 'Stockage des sauvegardes',
+	'Total used space' => 'Superficie totale utilisée',
+	'The export went well.' => 'L\'exportation s\'est bien passée.',
+	'An error has occurred!' => 'Une erreur s\'est produite !',
+	'Game was modified!' => 'Le jeu a été modifié !',
+	'Platform was modified!' => 'La plateforme a été modifiée !',
+	'No modifications!' => 'Aucune modification !',
+	'Back to top' => 'Retour en haut de page',
+	'Missing translation strings' => 'Chaînes de traduction manquantes',
+	'File' => 'Fichier',
+	'Strings to translate' => 'Chaînes à traduire',
+	'Available translation strings' => 'Chaînes de traduction disponibles',
+	'Value' => 'Valeur',
+	'Occurrences' => 'Occurrences'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 );
