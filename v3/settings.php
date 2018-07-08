@@ -13,8 +13,7 @@ $notifs_sound_autoplay = false;
 
 if (isset($_POST) && !empty($_POST))
 {
-	$now = new DateTime("NOW");
-    $datenow = $now->format('Y-m-d H:i:s');
+    $datenow = date("Y-m-d H:i:s");
 
     extract($_POST);
     $prompt = trim($prompt);

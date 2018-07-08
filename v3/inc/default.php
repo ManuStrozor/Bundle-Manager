@@ -84,7 +84,7 @@ $customers_selected = (strpos($_SERVER['REQUEST_URI'], 'customers.php')) ? 'sele
 					<?= $_SESSION['firstname'].' '.$_SESSION['lastname'] ?>
 				</button>
 				<!-- Dropdown menu -->
-				<div class="dropdown-content nav-item">
+				<div class="dropdown-content nav-item" style="min-width:180px">
 					<a class="nav-link" href="<?= $root ?>/plus.php" title="<?= $l['Add keys'] ?>"><i class="fas fa-plus"></i> <?= $l['Add keys'] ?></a>
 					<a class="nav-link" href="<?= $root ?>/create.php" title="<?= $l['Create boxes'] ?>"><i class="fas fa-box-open"></i> <?= $l['Create boxes'] ?></a>
 					<hr class="m-0">
