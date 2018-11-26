@@ -360,19 +360,19 @@ input[type="text"]::-moz-placeholder { /* Firefox 19+ */
 
 .label {
   position: absolute;
+  left: 0;
   right: 0;
+  bottom: 0;
   text-align: center;
-  font-size: 8px;
   padding: 2px 3px;
+  margin-bottom: -10px;
   line-height: .9;
   display: inline;
   font-weight: 700;
-  line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25em;
 }
 
 .label-success {
