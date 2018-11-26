@@ -75,19 +75,21 @@ if (isset($_POST) && !empty($_POST))
 		if (!empty($keys))
 		{
 			$info = $db->fetch("SELECT name FROM ".GAMES_TABLE." WHERE id = $game_id");
-			$logs->new('data', $listofkeys."added to {$info['name']}");
+			$logs->new('data', $listofkeys."added to ".$info['name']);
 		}
 	}
 }
 
 ob_start(); // Page content
+
+$games = $db->fetchAll("SELECT * FROM ".GAMES_TABLE." ORDER BY name ASC");
+$plats = $db->fetchAll("SELECT * FROM ".PLATFORMS_TABLE);
 ?>
 
 <form method="POST">
 	<div class="form-group form-inline">
 		<select name="game_id" class="form-control" required>
 			<option value="" selected disabled><?= $l['Choose a game'] ?></option>
-			<?php $games = $db->fetchAll("SELECT * FROM ".GAMES_TABLE." ORDER BY name ASC"); ?>
 			<?php foreach($games as $game): ?>
 				<option value="<?= $game['id'] ?>"><?= $game['name'] ?></option>
 			<?php endforeach; ?>
@@ -101,7 +103,6 @@ ob_start(); // Page content
 	<div class="form-group form-inline">
 		<select name="platform_id" class="form-control" required>
 			<option value="" selected disabled><?= $l['Choose a platform'] ?></option>
-			<?php $plats = $db->fetchAll("SELECT * FROM ".PLATFORMS_TABLE); ?>
 			<?php foreach($plats as $plat): ?>
 				<option value="<?= $plat['id'] ?>"><?= $plat['name'] ?></option>
 			<?php endforeach; ?>
