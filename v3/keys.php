@@ -51,7 +51,7 @@ if (isset($_POST['del']) && !empty($_POST['del']))
 	$key = $db->fetch("SELECT game_key, (SELECT name FROM ".GAMES_TABLE." WHERE id = k.game_id) AS gname FROM ".KEYS_TABLE." k WHERE id = {$_POST['del']}");
 
 	$db->exec("DELETE FROM ".KEYS_TABLE." WHERE id = {$_POST['del']}");
-	$logs->new('data', $key['game_key'].' ('.$key['gname'].') deleted from the keys table');
+	$logs->new('data', $key['game_key']." (".$key['gname'].") deleted from the keys table");
 	
 	$alertTitle = $l['OK'];
 	$alertContent = sprintf($l['The key %s of the game %s has been removed from the database !'], $key['game_key'], $key['gname']);

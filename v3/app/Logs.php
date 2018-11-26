@@ -15,6 +15,6 @@ class Logs
 
 	public function new($title, $description)
 	{
-		$this->db->exec("INSERT INTO {$this->table} (title, description, user_agent, ip_address, date_upd) VALUES ('$title', '$description', '{$_SERVER['HTTP_USER_AGENT']}', '{$_SERVER['REMOTE_ADDR']}', '{$this->db->getDatenow()}')");
+		$this->db->exec("INSERT INTO {$this->table} (title, description, user_agent, ip_address, date_upd) VALUES (\"$title\", \"$description\", \"{$_SERVER['HTTP_USER_AGENT']}\", \"{$_SERVER['REMOTE_ADDR']}\", \"{$this->db->getDatenow()}\")");
 	}
 }
