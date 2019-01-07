@@ -104,20 +104,6 @@ ob_start(); // Page content
 
 <?php
 $pageContent = ob_get_clean();
-ob_start(); // Head style
-?>
-
-<style>
-	.preg-key {
-		border: 1px solid lightgray;
-		border-radius: 3px;
-		padding: 2px;
-		color: gray;
-	}
-</style>
-
-<?php
-$headStyle = ob_get_clean();
 $pageTitle = $l['History'];
 $arianList = [
 	$l['Dashboard'] => ['href' => './', 'icon' => '<i class="fas fa-tachometer-alt"></i>']
