@@ -1,25 +1,31 @@
 <?php
-
 namespace App\HTML;
 
-class Pagination
-{
+class Pagination {
 	private $text;
 	private $db;
 	private $url;
 	private $end;
 
-	function __construct($params)
-	{
+	/**
+	 * Constructor of Pagination class
+	 * @param array
+	 * string text => "Display [maxrows / total] results"
+	 * object database => the current database instance
+	 * string url => order options to add to Href of all buttons and links
+	 */
+	function __construct($params) {
 		$this->text = $params['text'];
 		$this->db 	= $params['database'];
 		$this->url 	= $params['url'];
-		
 		$this->end 	= floor($this->db->getTotal() / $this->db->getMaxrows()) + 1;
 	}
 
-	public function render()
-	{
+	/**
+	 * Render the pagination strip
+	 * @return html
+	 */
+	public function render() {
 		$p = $this->db->getPage();
 		ob_start();
 		?>
@@ -78,33 +84,41 @@ class Pagination
 		return ob_get_clean();
 	}
 
-	private function changeMax($max)
-	{
+	/**
+	 * Determine Href of maxrows links
+	 * @param int number of rows to render
+	 * @return string
+	 */
+	private function changeMax($max) {
 		$href = '?m='.$max;
-		foreach ($this->url as $key => $url)
-		{
+		foreach ($this->url as $key => $url) {
 			$url = trim($url);
 			if (!empty($url)) $href .= '&'.$key.'='.$url;
 		}
 		$href .= '&p=1';
-
 		return $href;
 	}
 
-	private function goToPage($page)
-	{
+	/**
+	 * Determine Href of page buttons
+	 * @param int number of the page to which the button will point
+	 * @return string
+	 */
+	private function goToPage($page) {
 		$href = '?p='.$page;
-		foreach ($this->url as $key => $url)
-		{
+		foreach ($this->url as $key => $url) {
 			$url = trim($url);
 			if (!empty($url)) $href .= '&'.$key.'='.$url;
 		}
-
 		return $href;
 	}
 
-	private function valid($page)
-	{
+	/**
+	 * Check if the page is valid or not
+	 * @param int page to check
+	 * @return boolean True if the page is valid otherwise False
+	 */
+	private function valid($page) {
 		return ($page > 0 && $page <= $this->end);
 	}
 }

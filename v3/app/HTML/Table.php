@@ -1,27 +1,34 @@
 <?php
-
 namespace App\HTML;
 
-class Table
-{
+class Table {
 	private $params;
 	private $columns;
 
-	function __construct($params)
-	{
+	/**
+	 * Constructor of Table class
+	 * @param array
+	 */
+	function __construct($params) {
 		$this->params = $params;
 	}
 
-	public function moreColumns($columns)
-	{
+	/**
+	 * Define all the additionals columns
+	 * @param array
+	 */
+	public function moreColumns($columns) {
 		$this->columns = $columns;
 	}
 
-	public function render($export = false)
-	{
+	/**
+	 * Render a table from A to Z
+	 * @param string Database table to save by default is False
+	 * @return html 
+	 */
+	public function render($export = false) {
 		foreach ($this->params['th'] as $k => $t) break;
 		$id_field = $k;
-
 		ob_start();
 		?>
 
@@ -59,7 +66,7 @@ class Table
 								</a>
 							</th>
 						<?php endforeach; ?>
-						<!-- More Columns -->
+						<!-- More Columns header -->
 						<?php foreach ($this->columns['th'] as $key => $th): ?>
 							<th scope="col"><?= $th ?></th>
 						<?php endforeach; ?>
@@ -72,70 +79,42 @@ class Table
 					<?php foreach ($this->params['th'] as $kth => $th): ?>
 						<td>
 							<?php
-
-							if (!empty($data[$kth]))
-							{
-								if (!empty($this->params['td'][$kth]))
-								{
+							if (!empty($data[$kth])) {
+								if (!empty($this->params['td'][$kth])) {
 									$php = $this->params['td'][$kth]['php'];
 									$str = $this->params['td'][$kth]['str'];
-
 									$tmp = $data[$kth];
-									if (!empty($php))
-									{
+									if (!empty($php)) {
 										eval('$code = '.sprintf($php, $tmp).';');
 										$tmp = $code;
 									}
-
 									if (!empty($str))
-									{
 										$tmp = sprintf($str, $tmp, $data[$id_field]);
-									}
-
 									echo $tmp;
-								}
-								else
-								{
+								} else
 									echo $data[$kth];
-								}
-							}
-							else
-							{
+							} else
 								echo '--';
-							}
-
 							?>
 						</td>
 					<?php endforeach; ?>
-					<!-- More Columns -->
+					<!-- More Columns data -->
 					<?php foreach ($this->columns['th'] as $kth => $th): ?>
 						<td>
 							<?php
-
-							if (!empty($this->columns['td'][$kth]))
-							{
+							if (!empty($this->columns['td'][$kth])) {
 								$php = $this->columns['td'][$kth]['php'];
 								$str = $this->columns['td'][$kth]['str'];
-
 								$tmp = $data[$kth];
-								if (!empty($php))
-								{
+								if (!empty($php)) {
 									eval('$code = '.sprintf($php, $tmp).';');
 									$tmp = $code;
 								}
-
 								if (!empty($str))
-								{
 									$tmp = sprintf($str, $tmp, $data[$id_field]);
-								}
-
 								echo $tmp;
-							}
-							else
-							{
+							} else
 								echo $data[$kth];
-							}
-
 							?>
 						</td>
 					<?php endforeach; ?>

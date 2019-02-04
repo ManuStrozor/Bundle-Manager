@@ -1,30 +1,29 @@
 <?php
 require 'inc/inits.php';
-
 require 'inc/functions.php';
 
-if (isset($_POST) && !empty($_POST))
-{
+if (isset($_POST) && !empty($_POST)) {
 	$separator = '#!#';
 	$date = date("Y-m-d H:i:s");
 
 	$isSeveral = $db->fetchColumn("SELECT COUNT(id_configuration) FROM ".PREFIX_."configuration WHERE name = 'KEYMANAGER_LINE_SEVERAL'");
-	if ($isSeveral) $db->exec("UPDATE ".PREFIX_."configuration SET value = 1 WHERE name = 'KEYMANAGER_LINE_SEVERAL'");
-	else $db->exec("INSERT INTO ".PREFIX_."configuration (name, value, date_add, date_upd) VALUES ('KEYMANAGER_LINE_SEVERAL', 1, '$date', '$date')");
+	if ($isSeveral)
+		$db->exec("UPDATE ".PREFIX_."configuration SET value = 1 WHERE name = 'KEYMANAGER_LINE_SEVERAL'");
+	else
+		$db->exec("INSERT INTO ".PREFIX_."configuration (name, value, date_add, date_upd) VALUES ('KEYMANAGER_LINE_SEVERAL', 1, '$date', '$date')");
 
 	$isSeparator = $db->fetchColumn("SELECT COUNT(id_configuration) FROM ".PREFIX_."configuration WHERE name = 'KEYMANAGER_LINE_SEPARATOR'");
-	if ($isSeparator) $db->exec("UPDATE ".PREFIX_."configuration SET value = '$separator' WHERE name = 'KEYMANAGER_LINE_SEPARATOR'");
-	else $db->exec("INSERT INTO ".PREFIX_."configuration (name, value, date_add, date_upd) VALUES ('KEYMANAGER_LINE_SEPARATOR', '$separator', '$date', '$date')");
+	if ($isSeparator)
+		$db->exec("UPDATE ".PREFIX_."configuration SET value = '$separator' WHERE name = 'KEYMANAGER_LINE_SEPARATOR'");
+	else
+		$db->exec("INSERT INTO ".PREFIX_."configuration (name, value, date_add, date_upd) VALUES ('KEYMANAGER_LINE_SEPARATOR', '$separator', '$date', '$date')");
 
 	$not_enough_games = array();
 	$good_number = true;
-	foreach ($_POST as $k => $pid)
-	{
-		if ($k != "box" && $k != "nbox")
-		{
+	foreach ($_POST as $k => $pid) {
+		if ($k != "box" && $k != "nbox") {
 			$numKeys = $db->fetchColumn("SELECT COUNT(id) FROM ".KEYS_TABLE." WHERE game_id = $pid AND boxed = 0");
-			if ($numKeys < $_POST['nbox'])
-			{
+			if ($numKeys < $_POST['nbox']) {
 				$game = $db->fetch("SELECT name FROM ".GAMES_TABLE." WHERE id = $pid");
 				array_push($not_enough_games, $game['name']);
 				$good_number = false;
@@ -35,53 +34,40 @@ if (isset($_POST) && !empty($_POST))
 	$keycrypt = $db->fetch("SELECT value FROM ".PREFIX_."configuration WHERE name = 'BUNDLEMANAGER_KEYCRYPT_PATH'");
 	include '../../../'.$keycrypt['value'];
 
-	if (defined('_AUTO_KEY_CRYPT_'))
-	{
-		if ($good_number)
-		{
-			for ($i = 0; $i < $_POST['nbox']; $i++)
-			{
+	if (defined('_AUTO_KEY_CRYPT_')) {
+		if ($good_number) {
+			for ($i = 0; $i < $_POST['nbox']; $i++) {
 				$keys_phrase = '';
-				foreach ($_POST as $k => $pid)
-				{
-					if ($k == "box")
-					{
+				foreach ($_POST as $k => $pid) {
+					if ($k == "box") {
 						$idProduct = $pid;
-
 						$product = $db->fetch("SELECT name FROM ".PREFIX_."product_lang pl INNER JOIN ".PREFIX_."keymanager_product kp WHERE id_keymanager_product = $pid AND pl.id_product = kp.id_product AND id_shop = 1 AND id_lang = 1");
-
 						$stock = $db->fetch("SELECT id_product FROM ".PREFIX_."keymanager_product WHERE id_keymanager_product = $pid");
-
 						$keys_phrase = "Bundle: ".$product['name']."#!#";
 					}
-					else if ($k != "nbox")
-					{
+					else if ($k != "nbox") {
 						$key = $db->fetch("SELECT id, game_key, (SELECT name FROM ".GAMES_TABLE." g WHERE g.id = game_id) AS gname, (SELECT name FROM ".PLATFORMS_TABLE." p WHERE p.id = platform_id) AS pname FROM ".KEYS_TABLE." k WHERE game_id = $pid AND boxed = 0 ORDER BY rand() LIMIT 1");
-
 				    	$keys_phrase .= "(".$key['pname'].") ".$key['gname'].": ".$key['game_key']."#!#";
-
 				    	$db->exec("UPDATE ".KEYS_TABLE." SET boxed = 1, date_upd = '$date' WHERE id = {$key['id']}");
 					}
 				}
-
 				$db->exec("INSERT INTO ".PREFIX_."keymanager (id_keymanager_product, id_order_detail, id_shop, id_warehouse, key_value, key_image_type, key_image_width, key_image_height, secure_key, date_add, date_upd) VALUES ($idProduct, 0, 0, 0, AES_ENCRYPT(\"$keys_phrase\", '"._AUTO_KEY_CRYPT_."'), '', 0, 0, '{getMD5()}', '$date', '$date')");
 			}
-
 			$db->exec("UPDATE ".PREFIX_."stock_available SET quantity = quantity + {$_POST['nbox']} WHERE id_product = {$stock['id_product']}");
-
 			$alertTitle = $l['OK'];
-			if ($_POST['nbox'] == 1) $alertContent = sprintf($l['The box %s has been created and added in Key Manager !'], $product['name']);
-			else 					$alertContent = sprintf($l['The %d boxes %s has been created and added in Key Manager !'], $_POST['nbox'], $product['name']);
+			if ($_POST['nbox'] == 1)
+				$alertContent = sprintf($l['The box %s has been created and added in Key Manager !'], $product['name']);
+			else
+				$alertContent = sprintf($l['The %d boxes %s has been created and added in Key Manager !'], $_POST['nbox'], $product['name']);
 		}
-		else
-		{
+		else {
 			$alertTitle = $l['Oops'];
 			$alertContent = $l['Not enough keys in:'];
-			foreach ($not_enough_games as $not_enough_game) $alertContent .= ' '.$not_enough_game.',';
+			foreach ($not_enough_games as $not_enough_game)
+				$alertContent .= ' '.$not_enough_game.',';
 		}
 	}
-	else
-	{
+	else {
 		$alertTitle = '<i class="fas fa-exclamation-triangle"></i>';
 		$alertContent = $l['Encryption is incorrectly configured!'].' <a href="settings.php">'.$l['Settings'].'</a>';
 	}
@@ -132,7 +118,6 @@ ob_start(); // Head Style
     display: inline-block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
     cursor: pointer;
     font-size: 14px;
     -webkit-user-select: none;
