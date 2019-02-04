@@ -45,18 +45,6 @@ if (isset($_POST['edit']) && !empty($_POST['edit']))
 	}
 }
 
-// IF Action return
-if (isset($_POST['ret']) && !empty($_POST['ret']))
-{
-	$key = $db->fetch("SELECT game_key, (SELECT name FROM ".GAMES_TABLE." WHERE id = k.game_id) AS gname FROM ".KEYS_TABLE." k WHERE id = {$_POST['ret']}");
-
-	$db->exec("UPDATE ".KEYS_TABLE." SET boxed = 0 WHERE id = {$_POST['ret']}");
-	$logs->new('data', $key['game_key']." (".$key['gname'].") changed to not boxed");
-	
-	$alertTitle = $l['OK'];
-	$alertContent = sprintf("_Remis dans le stock_", $key['game_key'], $key['gname']);
-}
-
 // IF Action delete
 if (isset($_POST['del']) && !empty($_POST['del']))
 {
@@ -76,7 +64,6 @@ $keys = $db->selectAll(array(
 		'game_key',
 		'(SELECT name FROM '.GAMES_TABLE.' WHERE id = k.game_id) AS gname',
 		'(SELECT name FROM '.PLATFORMS_TABLE.' WHERE id = k.platform_id) AS pname',
-		'boxed',
 		'date_upd'
 	),
 	'from' => array(
@@ -84,7 +71,7 @@ $keys = $db->selectAll(array(
 		'alias' => 'k'
 	),
 	'where' => array(
-		//'conditions' => array('boxed = 0'),
+		'conditions' => array('boxed = 0'),
 		'like' => array(
 			'search' => $_GET['s'],
 			'fields' => array(
@@ -121,16 +108,11 @@ $table = new Table(array(
 		'pname' => $l['Platform'],
 		'gname' => $l['Game name'],
 		'game_key' => $l['Key'],
-		'date_upd' => $l['Date'],
-		'boxed' => '_Dans une bundle ?_'
+		'date_upd' => $l['Date']
 	),
 	'td' => array(
 		'game_key' => array(
 			'str' => '<input class="form-control clip-key" style="background-color:white" type="text" value="%s" id="k%2$d" readonly> <a href="#" onclick=\'clipboard("k%2$d")\' title="'.$l['Copy the key'].'" data-target="#clipboard%2$d" data-toggle="modal"><i class="fas fa-clipboard"></i></a>'
-		),
-		'boxed' => array(
-			'php' => '(%d == 1) ? \'<i class="fas fa-box"></i> _pas disponible_\' : \'\'',
-			'str' => '%s <a href="#" title="_Remettre en stock_" data-target="#return%2$d" data-toggle="modal"><i class="fas fa-undo-alt"></i></a>'
 		)
 	)
 ));
@@ -214,35 +196,6 @@ ob_start(); // Page content
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $l['Cancel'] ?></button>
             </div>
             </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="return<?= $key['id'] ?>" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"><i class="fas fa-undo-alt"></i> _Remettre en stock_</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                    <span class="sr-only"><?= $l['Close'] ?></span>
-                </button>
-            </div>
-            <div class="modal-body">
-            	<p>
-            		<strong><?= $l['Game'] ?></strong> : <?= $key['gname'] ?><br>
-            		<strong><?= $l['Platform'] ?></strong> : <?= $key['pname'] ?><br>
-            		<strong><?= $l['Key'] ?></strong> : <?= $key['game_key'] ?>
-            	</p>
-                <p><?= $l['What do you want with this key?'] ?></p>
-            </div>
-            <div class="modal-footer">
-            	<form method="POST">
-            		<input type="hidden" name="ret" value="<?= $key['id'] ?>">
-            		<button style="background-color:#3498db;color:#ecf0f1" type="submit" class="btn btn-primary-outline"> <i class="fas fa-undo-alt"></i> _Remettre en stock_</button>
-            	</form>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $l['Cancel'] ?></button>
-            </div>
         </div>
     </div>
 </div>
