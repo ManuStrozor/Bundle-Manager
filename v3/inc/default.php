@@ -160,28 +160,6 @@ $customers_selected = (strpos($_SERVER['REQUEST_URI'], 'customers.php')) ? 'sele
 			</div>
 		</div>
 
-		<!-- Fenêtres popup -->
-		<div class="modal fade" id="myHelp" tabindex="-1" role="dialog">
-		    <div class="modal-dialog" role="document">
-		        <div class="modal-content">
-		            <div class="modal-header">
-		                <h4 class="modal-title" id="myModalLabel"><i class="fas fa-question"></i> <?= $l['Help'] ?></h4>
-		                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $l['Close'] ?>">
-		                    <i class="fas fa-times"></i>
-		                    <span class="sr-only"><?= $l['Close'] ?></span>
-		                </button>
-		            </div>
-		            <div class="modal-body">
-		                <p></p>
-		            </div>
-		            <div class="modal-footer">
-		                <button type="button" class="btn btn-primary-outline"><?= $l['yes'] ?></button>
-		                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $l['no'] ?></button>
-		            </div>
-		        </div>
-		    </div>
-		</div>
-
 		<script src="<?= $root ?>/js/bootstrap.min.js"></script>
 
 		<?php if (!empty($_SESSION['logged_in'])): ?>
@@ -250,10 +228,6 @@ $customers_selected = (strpos($_SERVER['REQUEST_URI'], 'customers.php')) ? 'sele
 	        animateScroll();
 	    }
 
-	    //t = current time
-	    //b = start value
-	    //c = change in value
-	    //d = duration
 	    Math.easeInOutQuad = function (t, b, c, d) {
 	      t /= d/2;
 	        if (t < 1) return c/2*t*t + b;

@@ -33,22 +33,35 @@ ob_start(); // Page content
             <li class="list-group-item">
                 <strong>Pages</strong>
             </li>
-            <?php
-            $pages = [
-                $l['Orders']    => ['href' => 'orders.php',    'icon' => 'fas fa-shopping-bag'],
-                $l['Customers'] => ['href' => 'customers.php', 'icon' => 'fas fa-users'],
-                $l['Platforms'] => ['href' => 'platforms.php', 'icon' => 'fas fa-laptop'],
-                $l['Games']     => ['href' => 'games.php',     'icon' => 'fas fa-gamepad'],
-                $l['Keys']      => ['href' => 'keys.php',      'icon' => 'fas fa-key']
-            ];
-            ?>
-            <?php foreach ($pages as $key => $page): ?>
-                <li class="list-group-item">
-                    <a class="nav-link notlink" href="<?= $page['href'] ?>">
-                        <i class="<?= $page['icon'] ?>"></i> <?= $key ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
+            <div class="row col-12" style="margin:0;padding:0">
+            	<li class="list-group-item col-6">
+	                <a class="nav-link notlink" href="orders.php">
+	                    <i class="fas fa-shopping-bag"></i> <?= $l['Orders'] ?>
+	                </a>
+	            </li>
+	            <li class="list-group-item col-6">
+	                <a class="nav-link notlink" href="customers.php">
+	                    <i class="fas fa-users"></i> <?= $l['Customers'] ?>
+	                </a>
+	            </li>
+            </div>
+            <div class="row col-12" style="margin:0;padding:0">
+            	<li class="list-group-item col-4">
+	                <a class="nav-link notlink" href="platforms.php">
+	                    <i class="fas fa-laptop"></i> <?= $l['Platforms'] ?>
+	                </a>
+	            </li>
+	            <li class="list-group-item col-4">
+	                <a class="nav-link notlink" href="games.php">
+	                    <i class="fas fa-gamepad"></i> <?= $l['Games'] ?>
+	                </a>
+	            </li>
+	            <li class="list-group-item col-4">
+	                <a class="nav-link notlink" href="keys">
+	                    <i class="fas fa-key"></i> <?= $l['Keys'] ?>
+	                </a>
+	            </li>
+            </div>
         </ul>
     </div>
     <div class="col-12 col-xl-6">

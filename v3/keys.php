@@ -123,7 +123,10 @@ $table->moreColumns(array(
 	),
 	'td' => array(
 		array(
-			'str' => '<a href="#" title="'.$l['Edit'].'" data-target="#edit%2$d" data-toggle="modal"><i class="fas fa-edit"></i></a> - <a style="color:#e74c3c" href="#" onclick=\'clipboard("k%2$d")\' title="'.$l['Delete'].'" data-target="#clipboard%2$d" data-toggle="modal"><i class="fas fa-trash-alt"></i></a>'
+			'str' => '
+				<a href="#" title="'.$l['Edit'].'" data-target="#edit%2$d" data-toggle="modal"><i class="fas fa-edit"></i></a> -
+				<a style="color:#e74c3c" href="#" onclick=\'clipboard("k%2$d")\' title="'.$l['Delete'].'" data-target="#clipboard%2$d" data-toggle="modal"><i class="fas fa-trash-alt"></i></a>
+			'
 		)
 	)
 ));
